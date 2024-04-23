@@ -1,0 +1,8 @@
+*.lck
+pcb-backups/*
+*.gbr
+*.gbrjob
+*.drl
+*.zip
+
+.DS_Store
