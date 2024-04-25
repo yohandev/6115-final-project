@@ -4,15 +4,15 @@
 
 struct Gamepad Gamepad = {
     .joystick = {
-        .x = 0,
-        .y = 0,
-        .sel = 0,
+        .x = 1<<11,
+        .y = 1<<11,
+        .sel = false,
     },
-    .buttons = {0, 0},
+    .buttons = {false, false},
 };
 
 // Latches {action0, action1, joystick}
-static int buttons[3] = {0, 0, 0};
+static bool buttons[3] = {false, false, false};
 
 CY_ISR(Joystick_Btn_Handler) {
     buttons[2] = 1;
