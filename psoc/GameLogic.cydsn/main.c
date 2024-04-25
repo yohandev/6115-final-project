@@ -1,26 +1,24 @@
-/* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
-*/
 #include <project.h>
+#include <stdio.h>
 
-int main()
-{
+char sbuf[256];
+
+int main() {
     CyGlobalIntEnable; /* Enable global interrupts. */
 
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
-    for(;;)
-    {
-        /* Place your application code here. */
+    Joystick_X_Start();
+    Joystick_X_StartConvert();
+    
+    UART_KitProg_Start();
+    
+    while (1) {
+        if (Joystick_X_IsEndConversion(Joystick_X_WAIT_FOR_RESULT)) {
+            uint16 joyx = Joystick_X_GetResult16();
+            
+            snprintf(sbuf, sizeof(sbuf), "Joystick: %d", joyx);
+            UART_KitProg_PutString(sbuf);
+            
+            CyDelay(50);
+        }
     }
 }
-
-/* [] END OF FILE */
