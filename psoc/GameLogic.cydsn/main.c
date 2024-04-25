@@ -1,24 +1,30 @@
 #include <project.h>
 #include <stdio.h>
 
+#include "gamepad.h"
+
 char sbuf[256];
 
 int main() {
     CyGlobalIntEnable; /* Enable global interrupts. */
-
-    Joystick_X_Start();
-    Joystick_X_StartConvert();
     
     UART_KitProg_Start();
     
+    gamepad_init();
+    
     while (1) {
-        if (Joystick_X_IsEndConversion(Joystick_X_WAIT_FOR_RESULT)) {
-            uint16 joyx = Joystick_X_GetResult16();
-            
-            snprintf(sbuf, sizeof(sbuf), "Joystick: %d", joyx);
-            UART_KitProg_PutString(sbuf);
-            
-            CyDelay(50);
+        gamepad_poll();
+        
+        if (Gamepad.joystick.sel) {
+            UART_KitProg_PutString("Joystick!\n");
         }
+        if (Gamepad.buttons[0]) {
+            UART_KitProg_PutString("Action #0!\n");
+        }
+        if (Gamepad.buttons[1]) {
+            UART_KitProg_PutString("Action #1!\n");
+        }
+        
+        CyDelay(50);
     }
 }
