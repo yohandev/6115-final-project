@@ -16,6 +16,9 @@ int main() {
     
     // == Game loop
     while (1) {
+        // Throttle since we're not doing much
+        CyDelay(10);
+
         // Input
         gamepad_poll();
         
