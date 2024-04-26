@@ -29,6 +29,8 @@ typedef int64_t i64;
 typedef float f32;
 typedef double f64;
 
+const f32 PI = 3.1415926535897;
+
 // 2D Vector
 typedef union {         // TODO: fixed point
     f32 x;
