@@ -30,6 +30,13 @@ typedef double f64;
 
 static const f32 PI = 3.1415926535897;
 
+// Color
+typedef struct {
+    u16 r: 5;
+    u16 g: 6;
+    u16 b: 5;
+} rgb;
+
 // 2D Vector
 typedef struct {         // TODO: fixed point
     f32 x;
