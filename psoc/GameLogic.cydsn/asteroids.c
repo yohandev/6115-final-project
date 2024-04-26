@@ -1,6 +1,6 @@
 #include "asteroids.h"
 
-struct Asteroids Asteroids = {0};
+struct Asteroids Asteroids = {};
 
 void asteroids_init() {
     for (usize i = 0; i < ASTEROIDS_POOL_LEN; i++) {

@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="psoc\GameLogic\Source Files\src">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="psoc\GameLogic\Source Files\src\asteroids.c">
 <ExpandedNodeIds>
 <v>psoc</v>
 <v>psoc\GameLogic</v>
@@ -23,10 +23,13 @@
 <v>psoc\GameLogic\Header Files\cyapicallbacks.h</v>
 <v>psoc\GameLogic\Source Files</v>
 <v>psoc\GameLogic\Source Files\src</v>
+<v>psoc\GameLogic\Source Files\src\asteroids.c</v>
+<v>psoc\GameLogic\Source Files\src\asteroids.h</v>
 <v>psoc\GameLogic\Source Files\src\gamepad.c</v>
 <v>psoc\GameLogic\Source Files\src\gamepad.h</v>
+<v>psoc\GameLogic\Source Files\src\gpu.h</v>
 <v>psoc\GameLogic\Source Files\src\main.c</v>
-<v>psoc\GameLogic\Generated_Source</v>
+<v>psoc\GameLogic\Source Files\src\num.h</v>
 <v>psoc\GameLogic\Generated_Source\PSoC5</v>
 <v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn</v>
 <v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn\Action0_Btn.c</v>
@@ -147,30 +150,14 @@
 <v>psoc\GameLogic\Header Files\cyapicallbacks.h</v>
 <v>psoc\GameLogic\Source Files</v>
 <v>psoc\GameLogic\Source Files\src</v>
+<v>psoc\GameLogic\Source Files\src\asteroids.c</v>
+<v>psoc\GameLogic\Source Files\src\asteroids.h</v>
 <v>psoc\GameLogic\Source Files\src\gamepad.c</v>
 <v>psoc\GameLogic\Source Files\src\gamepad.h</v>
+<v>psoc\GameLogic\Source Files\src\gpu.h</v>
 <v>psoc\GameLogic\Source Files\src\main.c</v>
+<v>psoc\GameLogic\Source Files\src\num.h</v>
 <v>psoc\GameLogic\Generated_Source</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn\Action0_Btn.c</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn\Action0_Btn.h</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn_Pin</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn_Pin\Action0_Btn_Pin.c</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn_Pin\Action0_Btn_Pin.h</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action0_Btn_Pin\Action0_Btn_Pin_aliases.h</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action1_Btn</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action1_Btn\Action1_Btn.c</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action1_Btn\Action1_Btn.h</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action1_Btn_Pin</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action1_Btn_Pin\Action1_Btn_Pin.c</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action1_Btn_Pin\Action1_Btn_Pin.h</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Action1_Btn_Pin\Action1_Btn_Pin_aliases.h</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\cy_boot</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\DebounceClock</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\DebounceClock\DebounceClock.c</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\DebounceClock\DebounceClock.h</v>
-<v>psoc\GameLogic\Generated_Source\PSoC5\Joystick_Btn</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -199,6 +186,7 @@
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Action0_Btn_Pin.lst</v>
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Action1_Btn.lst</v>
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Action1_Btn_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\asteroids.lst</v>
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
@@ -234,6 +222,48 @@
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\GameLogic.elf</v>
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\GameLogic.hex</v>
 <v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\GameLogic.map</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Action0_Btn.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Action0_Btn_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Action1_Btn.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Action1_Btn_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\asteroids.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Cm3Start.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\CyBootAsmGnu.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\CyDmac.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\cyfitter_cfg.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\CyFlash.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\CyLib.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\cymetadata.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\cyPm.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\CySpc.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\cyutils.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\DebounceClock.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\gamepad.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_Btn.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_Btn_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_X.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_X_INT.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_X_IRQ.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_X_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_X_PM.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_X_theACLK.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_Y.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_Y_INT.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_Y_IRQ.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_Y_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_Y_PM.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\Joystick_Y_theACLK.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\main.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\UART_KitProg.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\UART_KitProg_BOOT.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\UART_KitProg_INT.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\UART_KitProg_IntClock.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\Listing Files\UART_KitProg_PM.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\GameLogic.elf</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\GameLogic.hex</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Release\GameLogic.map</v>
 <v>psoc\GameLogic\GameLogic.gpdsc</v>
 <v>psoc\GameLogic\GameLogic.rpt</v>
 <v>psoc\GameLogic\GameLogic_timing.html</v>
@@ -241,6 +271,36 @@
 <VisibleNodeIds>
 <v>psoc</v>
 <v>psoc\GameLogic</v>
+<v>psoc\GameLogic\CortexM3</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Action0_Btn.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Action0_Btn_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Action1_Btn.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Action1_Btn_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\asteroids.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\DebounceClock.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\gamepad.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_Btn.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_Btn_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_X.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_X_INT.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_X_IRQ.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_X_Pin.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_X_PM.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_X_theACLK.lst</v>
+<v>psoc\GameLogic\CortexM3\ARM_GCC_493\Debug\Listing Files\Joystick_Y.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -301,7 +361,7 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs />
-<config v="" />
+<config v="Release" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
 </CyXmlSerializer>

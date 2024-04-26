@@ -1,5 +1,4 @@
-#ifndef UTILS_H
-#define UTILS_H
+#pragma once
 
 #include <stdint.h>
 #include <stddef.h>
@@ -29,10 +28,10 @@ typedef int64_t i64;
 typedef float f32;
 typedef double f64;
 
-const f32 PI = 3.1415926535897;
+static const f32 PI = 3.1415926535897;
 
 // 2D Vector
-typedef union {         // TODO: fixed point
+typedef struct {         // TODO: fixed point
     f32 x;
     f32 y;
 } vec2;
@@ -59,7 +58,7 @@ static inline vec2 vec2_scale(const vec2 a, const f32 s) {
 }
 
 // 3D Vector
-typedef union {         // TODO: fixed point
+typedef struct {         // TODO: fixed point
     f32 x;
     f32 y;
     f32 z;
@@ -89,7 +88,7 @@ static inline vec3 vec3_scale(const vec3 a, const f32 s) {
     };
 }
 
-vec3 vec3_rand(const f32 scale) {
+static inline vec3 vec3_rand(const f32 scale) {
     // Order of operation will matter when changing this to fixed point
     return (vec3){
         .x = (f32)rand() / RAND_MAX * scale,
@@ -97,5 +96,3 @@ vec3 vec3_rand(const f32 scale) {
         .z = (f32)rand() / RAND_MAX * scale,
     };
 }
-
-#endif

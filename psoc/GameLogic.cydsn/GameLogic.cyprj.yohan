@@ -11,6 +11,14 @@
 <CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256 type_name="CyDesigner.Common.ProjMgmt.Model.CyConfigDependencies" version="1">
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
+<file name=".\CortexM3\ARM_GCC_493\Debug\asteroids.o">
+<dep name=".\asteroids.c" />
+<dep name=".\asteroids.h" />
+<dep name=".\num.h" />
+</file>
+<file name=".\asteroids.c" />
+<file name=".\asteroids.h" />
+<file name=".\num.h" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\gamepad.o">
 <dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
 <dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
@@ -55,6 +63,7 @@
 <dep name=".\Generated_Source\PSoC5\project.h" />
 <dep name=".\gamepad.c" />
 <dep name=".\gamepad.h" />
+<dep name=".\num.h" />
 </file>
 <file name=".\Generated_Source\PSoC5\Action0_Btn.h" />
 <file name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
@@ -141,9 +150,13 @@
 <dep name=".\Generated_Source\PSoC5\cypins.h" />
 <dep name=".\Generated_Source\PSoC5\cytypes.h" />
 <dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\asteroids.h" />
 <dep name=".\gamepad.h" />
+<dep name=".\gpu.h" />
 <dep name=".\main.c" />
+<dep name=".\num.h" />
 </file>
+<file name=".\gpu.h" />
 <file name=".\main.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\Action0_Btn.o">
 <dep name=".\Generated_Source\PSoC5\Action0_Btn.c" />
@@ -545,53 +558,564 @@
 <file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
 </CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
 </dependency_info>
+<dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM3" xml_contents_version="2">
+<CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
+<file name=".\CortexM3\ARM_GCC_493\Release\asteroids.o">
+<dep name=".\asteroids.c" />
+<dep name=".\asteroids.h" />
+<dep name=".\num.h" />
+</file>
+<file name=".\asteroids.c" />
+<file name=".\asteroids.h" />
+<file name=".\num.h" />
+<file name=".\CortexM3\ARM_GCC_493\Release\gamepad.o">
+<dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DebounceClock.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\gamepad.c" />
+<dep name=".\gamepad.h" />
+<dep name=".\num.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Action0_Btn.h" />
+<file name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
+<file name=".\Generated_Source\PSoC5\Action0_Btn_Pin_aliases.h" />
+<file name=".\Generated_Source\PSoC5\Action1_Btn.h" />
+<file name=".\Generated_Source\PSoC5\Action1_Btn_Pin.h" />
+<file name=".\Generated_Source\PSoC5\Action1_Btn_Pin_aliases.h" />
+<file name=".\Generated_Source\PSoC5\CyDmac.h" />
+<file name=".\Generated_Source\PSoC5\CyFlash.h" />
+<file name=".\Generated_Source\PSoC5\CyLib.h" />
+<file name=".\Generated_Source\PSoC5\CySpc.h" />
+<file name=".\Generated_Source\PSoC5\DebounceClock.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_Btn.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_Btn_Pin_aliases.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_X.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_X_IRQ.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_X_Pin.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_X_Pin_aliases.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_X_theACLK.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_Y.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_Y_Pin.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_Y_Pin_aliases.h" />
+<file name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.h" />
+<file name=".\Generated_Source\PSoC5\UART_KitProg.h" />
+<file name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.h" />
+<file name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<file name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<file name=".\Generated_Source\PSoC5\core_cm3.h" />
+<file name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<file name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<file name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<file name=".\Generated_Source\PSoC5\cyPm.h" />
+<file name=".\Generated_Source\PSoC5\cydevice.h" />
+<file name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<file name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<file name=".\Generated_Source\PSoC5\cyfitter.h" />
+<file name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<file name=".\Generated_Source\PSoC5\cypins.h" />
+<file name=".\Generated_Source\PSoC5\cytypes.h" />
+<file name=".\Generated_Source\PSoC5\project.h" />
+<file name=".\gamepad.c" />
+<file name=".\gamepad.h" />
+<file name=".\CortexM3\ARM_GCC_493\Release\main.o">
+<dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DebounceClock.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\asteroids.h" />
+<dep name=".\gamepad.h" />
+<dep name=".\gpu.h" />
+<dep name=".\main.c" />
+<dep name=".\num.h" />
+</file>
+<file name=".\gpu.h" />
+<file name=".\main.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Action0_Btn.o">
+<dep name=".\Generated_Source\PSoC5\Action0_Btn.c" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Action0_Btn.c" />
+<file name=".\cyapicallbacks.h" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Action0_Btn_Pin.o">
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.c" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Action0_Btn_Pin.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Action1_Btn.o">
+<dep name=".\Generated_Source\PSoC5\Action1_Btn.c" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Action1_Btn.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Action1_Btn_Pin.o">
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin.c" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Action1_Btn_Pin.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Cm3Start.o">
+<dep name=".\Generated_Source\PSoC5\Cm3Start.c" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Cm3Start.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\CyDmac.o">
+<dep name=".\Generated_Source\PSoC5\CyDmac.c" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\CyDmac.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\CyFlash.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.c" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\CyFlash.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\CyLib.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.c" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\CyLib.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\CySpc.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.c" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\CySpc.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\DebounceClock.o">
+<dep name=".\Generated_Source\PSoC5\DebounceClock.c" />
+<dep name=".\Generated_Source\PSoC5\DebounceClock.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\DebounceClock.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_Btn.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_Btn.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_Btn_Pin.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_X.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_X.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_X_INT.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_X.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_INT.c" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_X_INT.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_X_IRQ.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_IRQ.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_X_IRQ.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_X_PM.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_X.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_PM.c" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_X_PM.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_X_Pin.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_X_Pin.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_X_theACLK.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_X_theACLK.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_X_theACLK.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_Y.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_Y.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_Y_INT.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_Y.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_INT.c" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_Y_INT.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_Y_IRQ.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_Y_PM.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_Y.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_PM.c" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_Y_PM.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_Y_Pin.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_Y_Pin.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\Joystick_Y_theACLK.o">
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.c" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\UART_KitProg.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg.c" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\UART_KitProg.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\UART_KitProg_BOOT.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_BOOT.c" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\UART_KitProg_BOOT.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\UART_KitProg_INT.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_INT.c" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\UART_KitProg_INT.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\UART_KitProg_IntClock.o">
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.c" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\UART_KitProg_PM.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_PM.c" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\UART_KitProg_PM.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\cyPm.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.c" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\cyapicallbacks.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\cyPm.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\cyfitter_cfg.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.c" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\cyfitter_cfg.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\cymetadata.o">
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cymetadata.c" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+</file>
+<file name=".\Generated_Source\PSoC5\cymetadata.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\cyutils.o">
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\cyutils.c" />
+</file>
+<file name=".\Generated_Source\PSoC5\cyutils.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\CyBootAsmGnu.o">
+<dep name=".\Generated_Source\PSoC5\CyBootAsmGnu.s" />
+<dep name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
+<dep name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
+<dep name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
+</file>
+<file name=".\Generated_Source\PSoC5\CyBootAsmGnu.s" />
+<file name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
+<file name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
+<file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
+</CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
+</dependency_info>
 </CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256>
 </name>
 <name v="link_deps">
 <CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256 type_name="CyDesigner.Common.ProjMgmt.Model.CyConfigDependencies" version="1">
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" xml_contents_version="2">
-<CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM3\ARM_GCC_493\Debug\GameLogic.hex">
-<dep name=".\CortexM3\ARM_GCC_493\Debug\main.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\gamepad.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\cymetadata.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_X_Pin.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_X.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_X_INT.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_X_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\UART_KitProg.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\UART_KitProg_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\UART_KitProg_INT.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\UART_KitProg_BOOT.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_X_IRQ.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_X_theACLK.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\UART_KitProg_IntClock.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Cm3Start.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CyBootAsmGnu.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CyDmac.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CyFlash.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CyLib.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\cyPm.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\CySpc.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\cyutils.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_Y_Pin.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_Y.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_Y_INT.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_Y_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_Btn_Pin.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Action0_Btn_Pin.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Action1_Btn_Pin.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\DebounceClock.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_Y_IRQ.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_Y_theACLK.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Joystick_Btn.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Action1_Btn.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Action0_Btn.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\GameLogic.a" />
-<dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" />
-</file>
-</CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021>
+<CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1" />
+</dependency_info>
+<dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM3" xml_contents_version="2">
+<CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1" />
 </dependency_info>
 </CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256>
 </name>
@@ -601,43 +1125,84 @@
 <CyGuid_b0374e30-ce3a-47f2-ad85-821643292c68 type_name="CyDesigner.Common.ProjMgmt.Common.CyCmdLineData" version="2">
 <genericCmdLineData>
 <name v="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3">
-<name_val_pair name=".\main.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\cyfitter_cfg.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\cymetadata.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_BOOT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_IRQ.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_theACLK.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Cm3Start.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name=".\main.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\cyfitter_cfg.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\cymetadata.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_BOOT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_IRQ.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_theACLK.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Cm3Start.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
 <name_val_pair name=".\Generated_Source\PSoC5\CyBootAsmGnu.s" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=${OutputDir}/${CompileFile}.lst -g -W" />
-<name_val_pair name=".\Generated_Source\PSoC5\CyDmac.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\CyFlash.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\CyLib.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\cyPm.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\CySpc.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\cyutils.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name=".\Generated_Source\PSoC5\CyDmac.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\CyFlash.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\CyLib.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\cyPm.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\CySpc.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\cyutils.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
 <name_val_pair name="C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\CortexM3\ARM_GCC_493\Debug\GameLogic.hex" v="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -Og -ffat-lto-objects -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Action0_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Action1_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\DebounceClock.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\gamepad.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Action1_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
-<name_val_pair name=".\Generated_Source\PSoC5\Action0_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Action0_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Action1_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\DebounceClock.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\gamepad.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Action1_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Action0_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\asteroids.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -std=gnu11" />
+</name>
+<name v="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM3">
+<name_val_pair name=".\main.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\gamepad.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\asteroids.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\cyfitter_cfg.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\cymetadata.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_BOOT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_IRQ.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_X_theACLK.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Cm3Start.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\CyBootAsmGnu.s" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -alh=${OutputDir}/${CompileFile}.lst -g -W" />
+<name_val_pair name=".\Generated_Source\PSoC5\CyDmac.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\CyFlash.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\CyLib.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\cyPm.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\CySpc.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\cyutils.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_INT.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_PM.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Action0_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Action1_Btn_Pin.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\DebounceClock.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Joystick_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Action1_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\Generated_Source\PSoC5\Action0_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name="C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\CortexM3\ARM_GCC_493\Release\GameLogic.hex" v="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -Os -ffat-lto-objects -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\yohan\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\GameLogic.cyprj -d CY8C5888LTI-LP097 -s C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -1445,14 +2010,14 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="133585030541369420" />
+<deps_time v="133585661605130486" />
 <top_block v="TopDesign" />
 <last_generation v="0" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="133585030601530066" />
+<deps_time v="133585670963809446" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 </userData>
