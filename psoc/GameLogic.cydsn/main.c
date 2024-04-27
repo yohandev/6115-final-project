@@ -14,6 +14,7 @@ int main() {
     asteroids_init();
 
     gpu_init();
+    gpu_upload_mesh(0, &ASSET_STAR_DESTROYER_MESH);
     
     // == Game loop
     while (1) {

@@ -27,7 +27,7 @@ struct Mesh {
 // System operations
 void gpu_init();
 bool gpu_is_ready();
-void gpu_upload_mesh(usize id, struct Mesh* mesh);
+void gpu_upload_mesh(usize id, const struct Mesh* mesh);
 
 // Framebuffer/swapchain operations
 void gpu_clear_buffer();

@@ -26,20 +26,20 @@ bool gpu_is_ready() {
     return true;
 }
 
-void gpu_upload_mesh(usize id, struct Mesh* mesh) {
+void gpu_upload_mesh(usize id, const struct Mesh* mesh) {
     // Header
     UART_KitProg_PutChar(UPLOAD_MESH);
     // Mesh identifier
     UART_KitProg_PutArray(&id, sizeof(usize));
     // Vertices
-    UART_KitProg_PutArray(&mesh->vertices_len, sizeof(usize));
-    UART_KitProg_PutArray(mesh->vertices, mesh->vertices_len * sizeof(u16));
+    UART_KitProg_PutArray(&mesh->num_vertices, sizeof(usize));
+    UART_KitProg_PutArray(mesh->vertices, mesh->num_vertices * 3 * sizeof(u16));
     // Indices
-    UART_KitProg_PutArray(&mesh->indices_len, sizeof(usize));
-    UART_KitProg_PutArray(mesh->indices, mesh->indices_len * sizeof(u16));
+    UART_KitProg_PutArray(&mesh->num_faces, sizeof(usize));
+    UART_KitProg_PutArray(mesh->indices, mesh->num_faces * 3 * sizeof(u16));
     // Color
-    UART_KitProg_PutArray(&mesh->colors_len, sizeof(usize));
-    UART_KitProg_PutArray(mesh->colors, mesh->colors_len * sizeof(struct ColorRange));
+    UART_KitProg_PutArray(&mesh->num_colors, sizeof(usize));
+    UART_KitProg_PutArray(mesh->colors, mesh->num_colors * sizeof(struct ColorRange));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
