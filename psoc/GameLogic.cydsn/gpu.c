@@ -30,16 +30,16 @@ void gpu_upload_mesh(usize id, const struct Mesh* mesh) {
     // Header
     UART_KitProg_PutChar(UPLOAD_MESH);
     // Mesh identifier
-    UART_KitProg_PutArray(&id, sizeof(usize));
+    UART_KitProg_PutArray((u8*)&id, sizeof(usize));
     // Vertices
-    UART_KitProg_PutArray(&mesh->num_vertices, sizeof(usize));
-    UART_KitProg_PutArray(mesh->vertices, mesh->num_vertices * 3 * sizeof(u16));
+    UART_KitProg_PutArray((u8*)&mesh->num_vertices, sizeof(usize));
+    UART_KitProg_PutArray((u8*)mesh->vertices, mesh->num_vertices * 3 * sizeof(u16));
     // Indices
-    UART_KitProg_PutArray(&mesh->num_faces, sizeof(usize));
-    UART_KitProg_PutArray(mesh->indices, mesh->num_faces * 3 * sizeof(u16));
+    UART_KitProg_PutArray((u8*)&mesh->num_faces, sizeof(usize));
+    UART_KitProg_PutArray((u8*)mesh->indices, mesh->num_faces * 3 * sizeof(u16));
     // Color
-    UART_KitProg_PutArray(&mesh->num_colors, sizeof(usize));
-    UART_KitProg_PutArray(mesh->colors, mesh->num_colors * sizeof(struct ColorRange));
+    UART_KitProg_PutArray((u8*)&mesh->num_colors, sizeof(usize));
+    UART_KitProg_PutArray((u8*)mesh->colors, mesh->num_colors * sizeof(struct ColorRange));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
@@ -62,8 +62,8 @@ void gpu_set_camera(vec3 pos, vec3 rot) {
     // Header
     UART_KitProg_PutChar(SET_CAMERA);
     // Payload
-    UART_KitProg_PutArray(&pos, sizeof(vec3));
-    UART_KitProg_PutArray(&rot, sizeof(vec3));
+    UART_KitProg_PutArray((u8*)&pos, sizeof(vec3));
+    UART_KitProg_PutArray((u8*)&rot, sizeof(vec3));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
@@ -72,12 +72,12 @@ void gpu_draw_instanced(usize id, usize len, vec3* pos, vec3* rot) {
     // Header
     UART_KitProg_PutChar(SET_CAMERA);
     // Mesh identifier
-    UART_KitProg_PutArray(&id, sizeof(usize));
+    UART_KitProg_PutArray((u8*)&id, sizeof(usize));
     // Amount of instances
-    UART_KitProg_PutArray(&len, sizeof(usize));
+    UART_KitProg_PutArray((u8*)&len, sizeof(usize));
     // Transformations
-    UART_KitProg_PutArray(pos, len * sizeof(vec3));
-    UART_KitProg_PutArray(rot, len * sizeof(vec3));
+    UART_KitProg_PutArray((u8*)pos, len * sizeof(vec3));
+    UART_KitProg_PutArray((u8*)rot, len * sizeof(vec3));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
