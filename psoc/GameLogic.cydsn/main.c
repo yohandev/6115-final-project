@@ -4,6 +4,7 @@
 #include "gamepad.h"
 #include "asteroids.h"
 #include "gpu.h"
+#include "assets/assets.h"
 
 int main() {
     CyGlobalIntEnable; /* Enable global interrupts. */

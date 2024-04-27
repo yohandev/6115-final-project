@@ -15,13 +15,13 @@ struct Mesh {
     u16* vertices;
     u16* indices;
     struct ColorRange {
+        u16 start;          // Starting face index where this color takes effect
         rgb rgb;
-        u16 start;          // Starting index where this color takes effect
     }* colors;
 
-    usize vertices_len;
-    usize indices_len;
-    usize colors_len;
+    usize num_vertices;
+    usize num_faces;
+    usize num_colors;
 };
 
 // System operations
