@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 #include "gamepad.h"
-#include "asteroids.h"
+#include "world.h"
 #include "gpu.h"
 #include "assets/assets.h"
 

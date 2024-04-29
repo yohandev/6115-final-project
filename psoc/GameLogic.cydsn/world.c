@@ -1,4 +1,4 @@
-#include "asteroids.h"
+#include "world.h"
 
 struct Asteroids Asteroids = {};
 
