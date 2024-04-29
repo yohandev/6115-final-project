@@ -3,7 +3,6 @@ from pyrender import Viewer, Scene, Mesh, Primitive
 from threading import Thread
 from serial import Serial
 from enum import Enum
-from trimesh import load_mesh
 from time import sleep
 from struct import unpack
 
@@ -15,7 +14,6 @@ class PayloadType(Enum):
     SET_CAMERA = 0x84
     DRAW_INSTANCED = 0x85
 
-# mesh = Mesh.from_trimesh(load_mesh("./assets/star_destroyer.ply"))
 scene = Scene()
 viewer = Viewer.__new__(Viewer)
 
@@ -30,6 +28,7 @@ def main():
     sleep(0.5)
     
     with Serial("/dev/tty.usbmodem1103", 115200) as serial:
+        sleep(0.6)
         serial.write(b'READY')
         while True:
             header = serial.read()
@@ -52,29 +51,34 @@ def main():
 
 def parse_packet(header: PayloadType, serial: Serial):
     # Parsing utilities
+    def pairwise(i):
+        a = iter(i)
+        return zip(a, a)
     read_usize = lambda: int.from_bytes(serial.read(4), "little")
-    read_u16_array = lambda len: [int.from_bytes(b, "little") for b in serial.read(len * 2)[::2]]
+    read_u16_array = lambda len: [unpack("h", bytes(b)) for b in pairwise(serial.read(len * 2))]
     read_vec3 = lambda: unpack("3f", serial.read(12))
     packet_over = lambda: PayloadType(ord(serial.read())) == PayloadType.PACKET_OVER
-
-    print(header)
-
+    
     # == Upload Mesh ==
     if header == PayloadType.UPLOAD_MESH:
         id = read_usize()
+        print(f"Uploading Mesh #{id}")
         num_vertices = read_usize()
+        print(f"# Vertices: {num_vertices}")
         vertices = read_u16_array(num_vertices * 3)
         num_faces = read_usize()
+        print(f"# Faces: {num_faces}")
         indices = read_u16_array(num_faces * 3)
         num_colors = read_usize()
+        print(f"# Colors: {num_colors}")
         colors = read_u16_array(num_colors * 2)
+        print("Unpacking...")
 
         # Unpack and store mesh
-        vertices = [float(v) / (1 << 8) for v in vertices]
+        vertices = [float(v) / (1 << 8) for (v,) in vertices]
         # TODO: colors
-        meshes[id] = Primitive(positions=vertices, indices=indices, mode=4)
+        meshes[id] = Mesh([Primitive(positions=vertices, indices=indices, mode=4)])
 
-        print("got mesh!")
         with viewer.render_lock:
             scene.add(meshes[id])
 
