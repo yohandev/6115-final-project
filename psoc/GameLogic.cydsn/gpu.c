@@ -18,15 +18,29 @@ enum PayloadType {
     DRAW_INSTANCED,
 };
 
+void UART_KitProg_PutMany(const u8* data, usize len) {
+    while (len > 0) {
+        u8 tx = len > 255 ? 255 : len;
+        
+        UART_KitProg_PutArray(data, tx);
+        
+        data += tx;
+        len -= tx;
+    }
+}
+
 void gpu_init() {
     UART_KitProg_Start();
+    
+    CyDelay(500);
 
     // Wait for serial to be ready
+    UART_KitProg_ClearRxBuffer();
     while (!UART_KitProg_GetRxBufferSize()) {
 
     }
     UART_KitProg_ClearRxBuffer();
-    CyDelay(50);
+    CyDelay(200);
 }
 
 bool gpu_is_ready() {
@@ -40,13 +54,13 @@ void gpu_upload_mesh(usize id, const struct Mesh* mesh) {
     UART_KitProg_PutArray((u8*)&id, sizeof(usize));
     // Vertices
     UART_KitProg_PutArray((u8*)&mesh->num_vertices, sizeof(usize));
-    UART_KitProg_PutArray((u8*)mesh->vertices, mesh->num_vertices * 3 * sizeof(u16));
+    UART_KitProg_PutMany((u8*)mesh->vertices, mesh->num_vertices * 3 * sizeof(u16));
     // Indices
     UART_KitProg_PutArray((u8*)&mesh->num_faces, sizeof(usize));
-    UART_KitProg_PutArray((u8*)mesh->indices, mesh->num_faces * 3 * sizeof(u16));
+    UART_KitProg_PutMany((u8*)mesh->indices, mesh->num_faces * 3 * sizeof(u16));
     // Color
     UART_KitProg_PutArray((u8*)&mesh->num_colors, sizeof(usize));
-    UART_KitProg_PutArray((u8*)mesh->colors, mesh->num_colors * sizeof(struct ColorRange));
+    UART_KitProg_PutMany((u8*)mesh->colors, mesh->num_colors * sizeof(struct ColorRange));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
@@ -83,8 +97,8 @@ void gpu_draw_instanced(usize id, usize len, vec3* pos, vec3* rot) {
     // Amount of instances
     UART_KitProg_PutArray((u8*)&len, sizeof(usize));
     // Transformations
-    UART_KitProg_PutArray((u8*)pos, len * sizeof(vec3));
-    UART_KitProg_PutArray((u8*)rot, len * sizeof(vec3));
+    UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3));
+    UART_KitProg_PutMany((u8*)rot, len * sizeof(vec3));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }

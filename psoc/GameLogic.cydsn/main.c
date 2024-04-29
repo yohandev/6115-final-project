@@ -33,7 +33,7 @@ int main() {
         if (Gamepad.buttons[1]) {
             UART_KitProg_PutString("Action #1!\n");
         }
-
+        
         // Controllers, Physics Resolver
         asteroids_step();
 
