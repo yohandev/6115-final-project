@@ -26,6 +26,7 @@ void gpu_init() {
 
     }
     UART_KitProg_ClearRxBuffer();
+    CyDelay(50);
 }
 
 bool gpu_is_ready() {

@@ -24,6 +24,8 @@ cmdbuf = []     # Commands submitted from PSoC that are yet to be flushed
 flush = False   # Whether or not the command buffer should be processed yet
 
 def main():
+    global cmdbuf, flush
+
     # Give UI thread some time to boot up
     sleep(0.5)
     
@@ -33,10 +35,10 @@ def main():
             header = serial.read()
             # Oops, this was a print message!
             if header.isascii():
-                print(header, end=None)
+                print(chr(ord(header)), end="")
             # Otherwise parse the packet
             else:
-                parse_packet(PayloadType(header), serial)
+                parse_packet(PayloadType(ord(header)), serial)
             
             # Process rendering commands
             if not flush:
@@ -53,7 +55,9 @@ def parse_packet(header: PayloadType, serial: Serial):
     read_usize = lambda: int.from_bytes(serial.read(4), "little")
     read_u16_array = lambda len: [int.from_bytes(b, "little") for b in serial.read(len * 2)[::2]]
     read_vec3 = lambda: unpack("3f", serial.read(12))
-    packet_over = lambda: PayloadType(serial.read()) == PayloadType.PACKET_OVER
+    packet_over = lambda: PayloadType(ord(serial.read())) == PayloadType.PACKET_OVER
+
+    print(header)
 
     # == Upload Mesh ==
     if header == PayloadType.UPLOAD_MESH:
@@ -69,6 +73,10 @@ def parse_packet(header: PayloadType, serial: Serial):
         vertices = [float(v) / (1 << 8) for v in vertices]
         # TODO: colors
         meshes[id] = Primitive(positions=vertices, indices=indices, mode=4)
+
+        print("got mesh!")
+        with viewer.render_lock:
+            scene.add(meshes[id])
 
         assert packet_over()
     # == Clear Buffer ==
