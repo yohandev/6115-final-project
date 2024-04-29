@@ -20,6 +20,12 @@ enum PayloadType {
 
 void gpu_init() {
     UART_KitProg_Start();
+
+    // Wait for serial to be ready
+    while (!UART_KitProg_GetRxBufferSize()) {
+
+    }
+    UART_KitProg_ClearRxBuffer();
 }
 
 bool gpu_is_ready() {

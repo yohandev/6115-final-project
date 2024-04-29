@@ -28,6 +28,7 @@ def main():
     sleep(0.5)
     
     with Serial("/dev/tty.usbmodem1103", 115200) as serial:
+        serial.write(b'READY')
         while True:
             header = serial.read()
             # Oops, this was a print message!
