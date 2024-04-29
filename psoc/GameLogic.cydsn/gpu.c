@@ -20,6 +20,12 @@ enum PayloadType {
 
 void gpu_init() {
     UART_KitProg_Start();
+
+    // Wait for serial to be ready
+    while (!UART_KitProg_GetRxBufferSize()) {
+
+    }
+    UART_KitProg_ClearRxBuffer();
 }
 
 bool gpu_is_ready() {
@@ -70,7 +76,7 @@ void gpu_set_camera(vec3 pos, vec3 rot) {
 
 void gpu_draw_instanced(usize id, usize len, vec3* pos, vec3* rot) {
     // Header
-    UART_KitProg_PutChar(SET_CAMERA);
+    UART_KitProg_PutChar(DRAW_INSTANCED);
     // Mesh identifier
     UART_KitProg_PutArray((u8*)&id, sizeof(usize));
     // Amount of instances
