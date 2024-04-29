@@ -3,7 +3,6 @@ from pyrender import Viewer, Scene, Mesh, Primitive
 from threading import Thread
 from serial import Serial
 from enum import Enum
-from trimesh import load_mesh
 from time import sleep
 from struct import unpack
 
@@ -15,7 +14,6 @@ class PayloadType(Enum):
     SET_CAMERA = 0x84
     DRAW_INSTANCED = 0x85
 
-# mesh = Mesh.from_trimesh(load_mesh("./assets/star_destroyer.ply"))
 scene = Scene()
 viewer = Viewer.__new__(Viewer)
 
