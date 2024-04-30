@@ -154,7 +154,7 @@
   v(40pt, weak: true)
 
   // Start two column mode and configure paragraph properties.
-  show: columns.with(1, gutter: 12pt)
+  show: columns.with(2, gutter: 12pt)
   set par(justify: true, first-line-indent: 1em)
   show par: set block(spacing: 0.65em)
 
