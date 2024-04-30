@@ -5,8 +5,8 @@
 
 struct Gamepad {
     struct {
-        u16 x;          // TODO: normalize value
-        u16 y;          // TODO: normalize value
+        f32 x;          // TODO: fixed
+        f32 y;          // TODO: fixed
         bool sel;       // Pressed down exactly this frame?
     } joystick;
     bool buttons[2];    // Pressed down exactly this frame?

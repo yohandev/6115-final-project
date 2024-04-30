@@ -4,8 +4,8 @@
 
 struct Gamepad Gamepad = {
     .joystick = {
-        .x = 1<<11,
-        .y = 1<<11,
+        .x = 0.0,
+        .y = 0.0,
         .sel = false,
     },
     .buttons = {false, false},
@@ -54,9 +54,9 @@ void gamepad_poll() {
     
     // Joystick potentiometers
     if (Joystick_X_IsEndConversion(Joystick_X_WAIT_FOR_RESULT)) {
-        Gamepad.joystick.x = Joystick_X_GetResult16();
+        Gamepad.joystick.x = (Joystick_X_GetResult16() - (1 << 11)) / (f32)(1 << 11);
     }
     if (Joystick_Y_IsEndConversion(Joystick_Y_WAIT_FOR_RESULT)) {
-        Gamepad.joystick.y = Joystick_Y_GetResult16();
+        Gamepad.joystick.y = (Joystick_Y_GetResult16() - (1 << 11)) / (f32)(1 << 11);
     }
 }
