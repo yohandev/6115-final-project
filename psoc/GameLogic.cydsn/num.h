@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define len(x) (sizeof((x)) / sizeof((x)[0]))
 
@@ -102,4 +103,86 @@ static inline vec3 vec3_rand(const f32 scale) {
         .y = (f32)rand() / RAND_MAX * scale,
         .z = (f32)rand() / RAND_MAX * scale,
     };
+}
+
+// Quaternion
+// Adapted from https://github.com/MartinWeigel/Quaternion
+typedef struct {
+    f32 w;
+    f32 x;
+    f32 y;
+    f32 z;
+} quat;
+
+static inline quat quat_mul(const quat* a, const quat* b) {
+    quat out;
+
+    out.w = (a->w * b->w) - (a->x * b->x) - (a->y * b->y) - (a->z * b->z);
+    out.x = (a->x * b->w) + (a->w * b->x) + (a->y * b->z) - (a->z * b->y);
+    out.y = (a->w * b->y) - (a->x * b->z) + (a->y * b->w) + (a->z * b->x);
+    out.z = (a->w * b->z) + (a->x * b->y) - (a->y * b->x) + (a->z * b->w);
+
+    return out;
+}
+
+static inline vec3 quat_rotate(const quat* q, const vec3* v) {
+    vec3 out;
+    
+    f32 ww = q->w * q->w;
+    f32 xx = q->x * q->x;
+    f32 yy = q->y * q->y;
+    f32 zz = q->z * q->z;
+    f32 wx = q->w * q->x;
+    f32 wy = q->w * q->y;
+    f32 wz = q->w * q->z;
+    f32 xy = q->x * q->y;
+    f32 xz = q->x * q->z;
+    f32 yz = q->y * q->z;
+
+    out.x = (ww * v->x) + (2 * wy * v->z) - (2 * wz * v->y) +
+            (xx * v->x) + (2 * xy * v->y) + (2 * xz * v->z) -
+            (zz * v->x) - (yy * v->x);
+    out.y = (2 * xy * v->x) + (yy * v->y) + (2 * yz * v->z) +
+            (2 * wz * v->x) - (zz * v->y) + (ww * v->y) -
+            (2 * wx * v->z) - (xx * v->y);
+    out.z = (2 * xz * v->x) + (2 * yz * v->y) + (zz * v->z) -
+            (2 * wy * v->x) - (yy * v->z) + (2 * wx * v->y) -
+            (xx * v->z) + (ww * v->z);
+    
+    return out;
+}
+
+static inline vec3 quat_forward(const quat* q) {
+    vec3 out;
+    
+    f32 xx = q->x * q->x;
+    f32 yy = q->y * q->y;
+    f32 wx = q->w * q->x;
+    f32 wy = q->w * q->y;
+    f32 xz = q->x * q->z;
+    f32 yz = q->y * q->z;
+
+    out.x = 2 * (wy + xz);
+    out.y = 2 * (yz - wx);
+    out.z = 1 - 2 * (xx * yy);
+    
+    return out;
+}
+
+static inline quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
+    quat out;
+    
+    f32 cr = cos(roll * 0.5);
+    f32 sr = sin(roll * 0.5);
+    f32 cp = cos(pitch * 0.5);
+    f32 sp = sin(pitch * 0.5);
+    f32 cy = cos(yaw * 0.5);
+    f32 sy = sin(yaw * 0.5);
+
+    out.w = cr * cp * cy + sr * sp * sy;
+    out.x = sr * cp * cy - cr * sp * sy;
+    out.y = cr * sp * cy + sr * cp * sy;
+    out.z = cr * cp * sy - sr * sp * cy;
+
+    return out;
 }
