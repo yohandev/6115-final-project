@@ -1,5 +1,5 @@
-#ifndef ASTEROIDS_H
-#define ASTEROIDS_H
+#ifndef WORLD_H
+#define WORLD_H
 
 #include "num.h"
 
@@ -20,16 +20,28 @@
 // #define ASTEROIDS_GRID_SIZE 256 // (meters)
 // #define ASTEROIDS_GRID_POOL_LEN 
 
-#define ASTEROIDS_POOL_LEN 256
+#define WORLD_ASTEROIDS_POOL_LEN 256
 
-struct Asteroids {
-    vec3 pos[ASTEROIDS_POOL_LEN];
-    vec3 rot[ASTEROIDS_POOL_LEN];
+struct World {
+    struct Camera {
+        vec3 pos;
+        vec3 rot;
+    } camera;
+
+    struct Asteroids {
+        vec3 pos[WORLD_ASTEROIDS_POOL_LEN];
+        vec3 rot[WORLD_ASTEROIDS_POOL_LEN];
+    } asteroids;
+
+    struct StarDestroyer {
+        vec3 pos;
+        vec3 rot;
+    } star_destroyer;
 };
 
-extern struct Asteroids Asteroids;
+extern struct World World;
 
-void asteroids_init();
-void asteroids_step();
+void world_init();
+void world_step();
 
 #endif

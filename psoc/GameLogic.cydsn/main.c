@@ -14,7 +14,8 @@ int main() {
     asteroids_init();
 
     gpu_init();
-    gpu_upload_mesh(0, &ASSET_STAR_DESTROYER_MESH);
+    gpu_upload_mesh(ASSET_STAR_DESTROYER_MESH_ID, &ASSET_STAR_DESTROYER_MESH);
+    gpu_upload_mesh(ASSET_ASTEROID_MESH_ID, &ASSET_ASTEROID_MESH);
     
     // == Game loop
     while (1) {
@@ -35,12 +36,16 @@ int main() {
         }
         
         // Controllers, Physics Resolver
-        asteroids_step();
+        world_step();
 
         // Render
         while (!gpu_is_ready()) {}  // Stall if GPU is still processing last frame
 
         gpu_swap_buffer();          // Send last rendered frame (N-1) to the display, swap to unused buffer (N-2)
         gpu_clear_buffer();         // Clear the buffer to black (TODO: skybox would be cool)
+
+        gpu_set_camera(World.camera.pos, World.camera.rot);
+        gpu_draw_instanced(ASSET_STAR_DESTROYER_MESH_ID, 1, &World.star_destroyer.pos, &World.star_destroyer.rot);
+        gpu_draw_instanced(ASSET_ASTEROID_MESH_ID, WORLD_ASTEROIDS_POOL_LEN, World.asteroids.pos, World.asteroids.rot);
     }
 }

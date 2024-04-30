@@ -1,14 +1,19 @@
 #include "world.h"
+#include "gpu.h"
 
-struct Asteroids Asteroids = {};
+struct World World = {};
 
-void asteroids_init() {
-    for (usize i = 0; i < ASTEROIDS_POOL_LEN; i++) {
-        Asteroids.pos[i] = vec3_rand(100.0);
-        Asteroids.rot[i] = vec3_rand(2 * PI);
+void world_init() {
+    // Asteroids
+    for (usize i = 0; i < WORLD_ASTEROIDS_POOL_LEN; i++) {
+        World.asteroids.pos[i] = vec3_rand(100.0);
+        World.asteroids.rot[i] = vec3_rand(2 * PI);
     }
+
+    // Star Destroyer
+    World.star_destroyer.pos = (vec3){ .x=20, .y=10, .z=20 };
 }
 
-void asteroids_step() {
+void world_step() {
     // TODO: move the asteroids somehow
 }
