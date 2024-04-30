@@ -16,6 +16,7 @@ int main() {
     gpu_init();
     gpu_upload_mesh(ASSET_STAR_DESTROYER_MESH_ID, &ASSET_STAR_DESTROYER_MESH);
     gpu_upload_mesh(ASSET_ASTEROID_MESH_ID, &ASSET_ASTEROID_MESH);
+    gpu_upload_mesh(ASSET_XWING_MESH_ID, &ASSET_XWING_MESH);
     
     // == Game loop
     while (1) {
