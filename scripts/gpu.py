@@ -13,6 +13,7 @@ class PayloadType(Enum):
     SWAP_BUFFER = 0x83
     SET_CAMERA = 0x84
     DRAW_INSTANCED = 0x85
+    DRAW_INSTANCED_QUAT = 0x86
 
 scene = Scene()
 viewer = Viewer.__new__(Viewer)
@@ -57,6 +58,7 @@ def parse_packet(header: PayloadType, serial: Serial):
     read_usize = lambda: int.from_bytes(serial.read(4), "little")
     read_u16_array = lambda len: [unpack("h", bytes(b)) for b in pairwise(serial.read(len * 2))]
     read_vec3 = lambda: unpack("3f", serial.read(12))
+    read_vec4 = lambda: unpack("4f", serial.read(16))
     packet_over = lambda: PayloadType(ord(serial.read())) == PayloadType.PACKET_OVER
     
     # == Upload Mesh ==
@@ -107,6 +109,16 @@ def parse_packet(header: PayloadType, serial: Serial):
         rot = [read_vec3() for _ in range(num_instances)]
 
         cmdbuf.append((PayloadType.DRAW_INSTANCED, (pos, rot)))
+
+        assert packet_over()
+    # == Draw Instanced (Quaternions) ==
+    elif header == PayloadType.DRAW_INSTANCED_QUAT:
+        id = read_usize()
+        num_instances = read_usize()
+        pos = [read_vec3() for _ in range(num_instances)]
+        rot = [read_vec4() for _ in range(num_instances)]
+
+        cmdbuf.append((PayloadType.DRAW_INSTANCED_QUAT, (pos, rot)))
 
         assert packet_over()
     else:

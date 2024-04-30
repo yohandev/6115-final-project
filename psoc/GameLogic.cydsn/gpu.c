@@ -16,6 +16,7 @@ enum PayloadType {
     SWAP_BUFFER,
     SET_CAMERA,
     DRAW_INSTANCED,
+    DRAW_INSTANCED_QUAT,
 };
 
 void UART_KitProg_PutMany(const u8* data, usize len) {
@@ -99,6 +100,20 @@ void gpu_draw_instanced(usize id, usize len, vec3* pos, vec3* rot) {
     // Transformations
     UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3));
     UART_KitProg_PutMany((u8*)rot, len * sizeof(vec3));
+    // Footer
+    UART_KitProg_PutChar(PACKET_OVER);
+}
+
+void gpu_draw_instanced_quat(usize id, usize len, vec3* pos, quat* rot) {
+    // Header
+    UART_KitProg_PutChar(DRAW_INSTANCED_QUAT);
+    // Mesh identifier
+    UART_KitProg_PutArray((u8*)&id, sizeof(usize));
+    // Amount of instances
+    UART_KitProg_PutArray((u8*)&len, sizeof(usize));
+    // Transformations
+    UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3));
+    UART_KitProg_PutMany((u8*)rot, len * sizeof(quat));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
