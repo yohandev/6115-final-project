@@ -35,7 +35,7 @@ def read_loop():
     # Give UI thread some time to boot up
     sleep(0.5)
 
-    serial = Serial("/dev/tty.usbmodem1103", 115200)
+    serial = Serial("/dev/tty.usbmodem1103", 921600)
 
     # Tell PSoC we're ready to receive data
     sleep(0.6)
