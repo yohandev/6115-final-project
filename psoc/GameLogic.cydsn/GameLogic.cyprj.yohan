@@ -560,6 +560,14 @@
 </dependency_info>
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM3" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
+<file name=".\CortexM3\ARM_GCC_493\Release\xwing_mesh.o">
+<dep name=".\assets\xwing_mesh.c" />
+<dep name=".\gpu.h" />
+<dep name=".\num.h" />
+</file>
+<file name=".\assets\xwing_mesh.c" />
+<file name=".\gpu.h" />
+<file name=".\num.h" />
 <file name=".\CortexM3\ARM_GCC_493\Release\main.o">
 <dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
 <dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
@@ -607,6 +615,7 @@
 <dep name=".\gpu.h" />
 <dep name=".\main.c" />
 <dep name=".\num.h" />
+<dep name=".\player.h" />
 <dep name=".\world.h" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\gpu.h" />
 </file>
@@ -653,77 +662,23 @@
 <file name=".\Generated_Source\PSoC5\project.h" />
 <file name=".\assets\assets.h" />
 <file name=".\gamepad.h" />
-<file name=".\gpu.h" />
 <file name=".\main.c" />
-<file name=".\num.h" />
+<file name=".\player.h" />
 <file name=".\world.h" />
 <file name=".\CortexM3\ARM_GCC_493\Release\gpu.h" />
-<file name=".\CortexM3\ARM_GCC_493\Release\world.o">
+<file name=".\CortexM3\ARM_GCC_493\Release\player.o">
+<dep name=".\gamepad.h" />
 <dep name=".\num.h" />
-<dep name=".\world.c" />
-<dep name=".\world.h" />
+<dep name=".\player.c" />
+<dep name=".\player.h" />
 </file>
-<file name=".\world.c" />
-<file name=".\asteroids.h" />
-<file name=".\CortexM3\ARM_GCC_493\Release\gpu.o">
-<dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
-<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
-<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\Action1_Btn.h" />
-<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin.h" />
-<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
-<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC5\CyLib.h" />
-<dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\DebounceClock.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_Btn.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_X.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_X_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_X_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_Y.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\UART_KitProg.h" />
-<dep name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.h" />
-<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
-<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
-<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
-<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
-<dep name=".\Generated_Source\PSoC5\cyPm.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC5\cypins.h" />
-<dep name=".\Generated_Source\PSoC5\cytypes.h" />
-<dep name=".\Generated_Source\PSoC5\project.h" />
-<dep name=".\gpu.c" />
-<dep name=".\gpu.h" />
-<dep name=".\num.h" />
-</file>
-<file name=".\gpu.c" />
+<file name=".\player.c" />
 <file name=".\CortexM3\ARM_GCC_493\Release\star_destroyer_mesh.o">
 <dep name=".\assets\star_destroyer_mesh.c" />
 <dep name=".\gpu.h" />
 <dep name=".\num.h" />
 </file>
 <file name=".\assets\star_destroyer_mesh.c" />
-<file name=".\CortexM3\ARM_GCC_493\Release\asteroids.o">
-<dep name=".\asteroids.c" />
-<dep name=".\asteroids.h" />
-<dep name=".\num.h" />
-</file>
-<file name=".\asteroids.c" />
 <file name=".\CortexM3\ARM_GCC_493\Release\gamepad.o">
 <dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
 <dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
@@ -771,6 +726,67 @@
 <dep name=".\num.h" />
 </file>
 <file name=".\gamepad.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\gpu.o">
+<dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Action0_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Action1_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DebounceClock.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Btn_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_X_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_Pin_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\Joystick_Y_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg.h" />
+<dep name=".\Generated_Source\PSoC5\UART_KitProg_IntClock.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\gpu.c" />
+<dep name=".\gpu.h" />
+<dep name=".\num.h" />
+</file>
+<file name=".\gpu.c" />
+<file name=".\CortexM3\ARM_GCC_493\Release\world.o">
+<dep name=".\gpu.h" />
+<dep name=".\num.h" />
+<dep name=".\world.c" />
+<dep name=".\world.h" />
+</file>
+<file name=".\world.c" />
+<file name=".\asteroids.h" />
+<file name=".\CortexM3\ARM_GCC_493\Release\asteroids.o">
+<dep name=".\asteroids.c" />
+<dep name=".\asteroids.h" />
+<dep name=".\num.h" />
+</file>
+<file name=".\asteroids.c" />
 <file name=".\CortexM3\ARM_GCC_493\Release\Action0_Btn.o">
 <dep name=".\Generated_Source\PSoC5\Action0_Btn.c" />
 <dep name=".\Generated_Source\PSoC5\Action0_Btn.h" />
@@ -1186,6 +1202,8 @@
 <dep name=".\CortexM3\ARM_GCC_493\Release\world.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\gpu.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\star_destroyer_mesh.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Release\xwing_mesh.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Release\player.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\cyfitter_cfg.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\cymetadata.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\Joystick_X_Pin.o" />
@@ -1310,10 +1328,12 @@
 <name_val_pair name=".\Generated_Source\PSoC5\Joystick_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
 <name_val_pair name=".\Generated_Source\PSoC5\Action1_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
 <name_val_pair name=".\Generated_Source\PSoC5\Action0_Btn.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
-<name_val_pair name="C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\CortexM3\ARM_GCC_493\Release\GameLogic.hex" v="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -Os -ffat-lto-objects -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections" />
+<name_val_pair name="C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\CortexM3\ARM_GCC_493\Release\GameLogic.hex" v="-mcpu=cortex-m3 -mthumb -g -ffunction-sections -Os -ffat-lto-objects -l m -L Generated_Source\PSoC5 -Wl,-Map,${OutputDir}/${ProjectShortName}.map -T Generated_Source\PSoC5\cm3gcc.ld -specs=nano.specs -Wl,--gc-sections" />
 <name_val_pair name=".\gpu.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
 <name_val_pair name=".\assets\star_destroyer_mesh.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
 <name_val_pair name=".\world.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\assets\xwing_mesh.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\player.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\yohan\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\GameLogic.cyprj -d CY8C5888LTI-LP097 -s C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -2128,7 +2148,7 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="133588896447614706" />
+<deps_time v="133589876974824973" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 </userData>
