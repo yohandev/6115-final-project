@@ -12,9 +12,9 @@
 // in the game should ideally have vertices almost maxing out the 8.8 fixed point. Also,
 // because there is no per-vertex color, meshes with lots of similar color are preferred.
 struct Mesh {
-    u16* vertices;
-    u16* indices;
-    struct ColorRange {
+    const i16* vertices;
+    const u16* indices;
+    const struct ColorRange {
         u16 start;          // Starting face index where this color takes effect
         rgb rgb;
     }* colors;
