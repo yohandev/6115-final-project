@@ -162,12 +162,17 @@ static inline vec3 quat_forward(const quat* q) {
     f32 zz = q->z * q->z;
     f32 wx = q->w * q->x;
     f32 wy = q->w * q->y;
+    f32 wz = q->w * q->z;
+    f32 xy = q->x * q->y;
     f32 xz = q->x * q->z;
     f32 yz = q->y * q->z;
 
-    out.x = 2 * (wy + xz);
-    out.y = 2 * (yz - wx);
-    out.z = zz - yy - xx + ww;
+    //out.x = 2 * (wy + xz);
+    //out.y = 2 * (yz - wx);
+    //out.z = zz - yy - xx + ww;
+    out.x = 2 * (xy - wz);
+    out.y = 1 - 2 * (xx + zz);
+    out.z = 2 * (yz + wx);
     
     return out;
 }
