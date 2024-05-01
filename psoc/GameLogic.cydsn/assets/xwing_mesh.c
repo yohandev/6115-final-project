@@ -1217,7 +1217,7 @@ static const i16 VERTICES[] = {
     734, -7, -78,
 };
 
-static const i16 INDICES[] = {
+static const u16 INDICES[] = {
     0, 1, 2,
     0, 33, 26,
     227, 225, 228,
