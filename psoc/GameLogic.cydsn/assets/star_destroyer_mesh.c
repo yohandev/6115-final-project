@@ -3,7 +3,7 @@
 #include "gpu.h"
 #include "num.h"
 
-static const u16 VERTICES[] = {
+static const i16 VERTICES[] = {
     -8219, -2107, -389,
     -8227, -2109, -186,
     -8662, -1948, -266,
@@ -6419,8 +6419,8 @@ static const u16 INDICES[] = {
 };
 
 static const struct ColorRange COLORS[] = {
-    0, 0x0000,
-    651, 0xF81F,
+    { 0, { .r=0, .g=0, .b=0 }},
+    { 651, { .r=31, .g=0, .b=31 }},
 };
 
 const struct Mesh ASSET_STAR_DESTROYER_MESH = {

@@ -83,7 +83,7 @@ def compress_faces(faces):
     colors = []
 
     def rgb565(r, g, b):
-        return ((r & 0xf8) << 8) | ((g & 0xfc) << 3) | ((b & 0xf8) >> 3)
+        return (r >> 3, g >> 2, b >> 3)
 
     for ((r, g, b), triangles) in faces.items():
         colors.append((len(indices), rgb565(r, g, b)))
@@ -111,7 +111,7 @@ def convert_mesh(path):
 #include "gpu.h"
 #include "num.h"
 
-static const u16 VERTICES[] = {{
+static const i16 VERTICES[] = {{
     {nl.join(f"{x}, {y}, {z}," for (x, y, z) in vertices)}
 }};
 
@@ -120,7 +120,7 @@ static const u16 INDICES[] = {{
 }};
 
 static const struct ColorRange COLORS[] = {{
-    {nl.join(f"{i}, 0x{rgb:04X}," for (i, rgb) in colors)}
+    {nl.join(f"{{ {i}, {{ .r={r}, .g={g}, .b={b} }}}}," for (i, (r, g, b)) in colors)}
 }};
 
 const struct Mesh NAME_OF_MESH_HERE = {{
@@ -135,4 +135,4 @@ const struct Mesh NAME_OF_MESH_HERE = {{
     """
 
 
-print(convert_mesh("./assets/x_wing.ply"))
+print(convert_mesh("./assets/star_destroyer.ply"))
