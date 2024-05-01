@@ -3543,9 +3543,9 @@ static const u16 INDICES[] = {
 };
 
 static const struct ColorRange COLORS[] = {
-    0, 0x0000,
-    52, 0x0020,
-    78, 0x0841,
+    { 0, 0x0000 },
+    { 52, 0x0020 },
+    { 78, 0x0841 },
     102, 0x0000,
     140, 0x0841,
     146, 0x1082,
