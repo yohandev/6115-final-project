@@ -4,6 +4,7 @@
 #include "gamepad.h"
 #include "player.h"
 #include "world.h"
+#include "time.h"
 #include "gpu.h"
 #include "assets/assets.h"
 
@@ -20,10 +21,15 @@ int main() {
     // gpu_upload_mesh(ASSET_ASTEROID_MESH_ID, &ASSET_ASTEROID_MESH);
     gpu_upload_mesh(ASSET_XWING_MESH_ID, &ASSET_XWING_MESH);
     
+    time_init();
+    
     // == Game loop
     while (1) {
         // Throttle since we're not doing much
         CyDelay(10);
+        
+        // Time
+        time_step();
 
         // Input
         gamepad_poll();
