@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NUM_H
+#define NUM_H
 
 #include <stdint.h>
 #include <stddef.h>
@@ -186,3 +187,5 @@ static inline quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
 
     return out;
 }
+
+#endif
