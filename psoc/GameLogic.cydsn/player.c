@@ -1,5 +1,6 @@
 #include "player.h"
 #include "gamepad.h"
+#include "time.h"
 
 struct Player Player = {
     .pos = { .x=-82, .y=-47, .z=49 },
@@ -14,10 +15,10 @@ void player_init() {
 }
 
 void player_step() {
-    f32 yaw = Gamepad.joystick.x;
-    f32 pitch = Gamepad.joystick.y;
+    f32 yaw = Gamepad.joystick.x * Time.dt;
+    f32 pitch = Gamepad.joystick.y * Time.dt;
     quat input = quat_from_euler(yaw, pitch, 0.0);
 
     Player.rot = quat_mul(&Player.rot, &input);
-    Player.pos = vec3_add(Player.pos, quat_forward(&Player.rot));
+    Player.pos = vec3_add(Player.pos, vec3_scale(quat_forward(&Player.rot), Time.dt));
 }

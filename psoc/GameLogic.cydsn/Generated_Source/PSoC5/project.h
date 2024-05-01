@@ -36,6 +36,8 @@
 #include "Action1_Btn.h"
 #include "Action0_Btn.h"
 #include "Joystick_Btn.h"
+#include "GameTimeClock.h"
+#include "GameTimeReg.h"
 #include "Joystick_X_IRQ.h"
 #include "Joystick_X_theACLK.h"
 #include "UART_KitProg_IntClock.h"
