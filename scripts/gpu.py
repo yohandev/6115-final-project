@@ -19,6 +19,7 @@ SWAP_BUFFER = b"\x83"
 SET_CAMERA = b"\x84"
 DRAW_INSTANCED = b"\x85"
 DRAW_INSTANCED_QUAT = b"\x86"
+DRAW_INSTANCED_SCALE = b"\x87"
 
 
 origin = load_mesh("./assets/debug_camera.ply")
@@ -98,6 +99,20 @@ def read_loop():
             rotations = np.array(rotations).reshape((num_instances, 4))
 
             commands.put((DRAW_INSTANCED_QUAT, id, positions, rotations))
+        elif header == DRAW_INSTANCED_SCALE:
+            id, = unpack("<I", serial.read(4))
+            num_instances, = unpack("<I", serial.read(4))
+            positions = unpack(f"<{num_instances * 3}f", serial.read(num_instances * 12))
+            rotations = unpack(f"<{num_instances * 3}f", serial.read(num_instances * 12))
+            scales = unpack(f"<{num_instances * 1}f", serial.read(num_instances * 4))
+
+            assert serial.read() == PACKET_OVER
+
+            positions = np.array(positions).reshape((num_instances, 3))
+            rotations = np.array(rotations).reshape((num_instances, 3))
+            scales = np.array(scales).reshape((num_instances, 1))
+
+            commands.put((DRAW_INSTANCED_SCALE, id, positions, rotations, scales))
         # Reading mid-packet or something else entirely went wrong!
         else:
             raise ValueError(f"Unexpected packet: {header}")
@@ -141,6 +156,17 @@ def render_loop(scene: Scene):
 
                 todelete.append(scene.add_geometry(meshes[id], transform=pose, node_name=str(meshid), geom_name=str(meshid)))
                 meshid += 1
+        elif header == DRAW_INSTANCED_SCALE:
+            id, positions, rotations, scales = args
+
+            for (position, rotation, scale) in zip(positions, rotations, scales):
+                pose = np.eye(4, 4)
+                pose[:3, :3] = R.from_euler("xyz", rotation, degrees=False).as_matrix()
+                pose[:3, 3] = position
+                pose[[(0, 0), (1, 1), (2,2)]] *= scale
+
+                todelete.append(scene.add_geometry(meshes[id], transform=pose, node_name=str(meshid), geom_name=str(meshid)))
+                meshid += 1
         elif header == SET_CAMERA:
             position, rotation = args
 
@@ -149,9 +175,6 @@ def render_loop(scene: Scene):
             pose[:3, 3] = position
 
             scene.camera_transform = pose
-            
-
-            # scene.graph.update(scene.graph.nodes_geometry[0], matrix=pose)
 
 
 # Serial Thread

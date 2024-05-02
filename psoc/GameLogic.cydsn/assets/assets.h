@@ -10,7 +10,7 @@ enum AssetIdentifiers {
 };
 
 extern const struct Mesh ASSET_STAR_DESTROYER_MESH;
-// extern const struct Mesh ASSET_ASTEROID_MESH;
+extern const struct Mesh ASSET_ASTEROID_MESH;
 extern const struct Mesh ASSET_XWING_MESH;
 
 #endif

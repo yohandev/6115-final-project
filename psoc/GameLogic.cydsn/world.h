@@ -20,7 +20,7 @@
 // #define ASTEROIDS_GRID_SIZE 256 // (meters)
 // #define ASTEROIDS_GRID_POOL_LEN 
 
-#define WORLD_ASTEROIDS_POOL_LEN 256
+#define WORLD_ASTEROIDS_POOL_LEN 512
 
 struct World {
     struct Camera {
@@ -31,6 +31,7 @@ struct World {
     struct Asteroids {
         vec3 pos[WORLD_ASTEROIDS_POOL_LEN];
         vec3 rot[WORLD_ASTEROIDS_POOL_LEN];
+        f32 scale[WORLD_ASTEROIDS_POOL_LEN];
     } asteroids;
 
     struct StarDestroyer {

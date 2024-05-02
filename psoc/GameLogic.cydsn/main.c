@@ -18,7 +18,7 @@ int main() {
 
     gpu_init();
     gpu_upload_mesh(ASSET_STAR_DESTROYER_MESH_ID, &ASSET_STAR_DESTROYER_MESH);
-    // gpu_upload_mesh(ASSET_ASTEROID_MESH_ID, &ASSET_ASTEROID_MESH);
+    gpu_upload_mesh(ASSET_ASTEROID_MESH_ID, &ASSET_ASTEROID_MESH);
     gpu_upload_mesh(ASSET_XWING_MESH_ID, &ASSET_XWING_MESH);
     
     time_init();
@@ -56,7 +56,7 @@ int main() {
 
         gpu_set_camera(Player.camera_pos, Player.camera_rot);
         gpu_draw_instanced(ASSET_STAR_DESTROYER_MESH_ID, 1, &World.star_destroyer.pos, &World.star_destroyer.rot);
-        // gpu_draw_instanced(ASSET_ASTEROID_MESH_ID, WORLD_ASTEROIDS_POOL_LEN, World.asteroids.pos, World.asteroids.rot);
+        gpu_draw_instanced_scale(ASSET_ASTEROID_MESH_ID, WORLD_ASTEROIDS_POOL_LEN, World.asteroids.pos, World.asteroids.rot, World.asteroids.scale);
         gpu_draw_instanced_quat(ASSET_XWING_MESH_ID, 1, &Player.pos, &Player.rot);
     }
 }

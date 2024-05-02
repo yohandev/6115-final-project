@@ -135,4 +135,4 @@ const struct Mesh NAME_OF_MESH_HERE = {{
     """
 
 
-print(convert_mesh("./assets/x_wing.ply"))
+print(convert_mesh("./assets/asteroid.ply"))
