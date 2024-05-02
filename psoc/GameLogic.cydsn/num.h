@@ -195,4 +195,33 @@ static inline quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
     return out;
 }
 
+static inline quat quat_slerp(quat* a, quat* b, f32 t) {
+    f32 cos_half_theta = (a->w * b->w) + (a->x * b->x) + (a->y * b->y) + (a->z * b->z);
+
+    if (fabs(cos_half_theta) >= 1.0) {
+        return *a;
+    }
+
+    f32 half_theta = acos(cos_half_theta);
+    f32 sin_half_theta = sqrt(1.0 - (cos_half_theta * cos_half_theta));
+    quat out;
+
+    if (fabs(sin_half_theta) < 1e-4) {
+        out.w = (a->w * 0.5) + (b->w * 0.5);
+        out.x = (a->x * 0.5) + (b->x * 0.5);
+        out.y = (a->y * 0.5) + (b->y * 0.5);
+        out.z = (a->z * 0.5) + (b->z * 0.5);
+    } else {
+        f32 ratio_a = sin((1 - t) * half_theta) / sin_half_theta;
+        f32 ratio_b = sin(t * half_theta) / sin_half_theta;
+
+        out.w = (a->w * ratio_a) + (b->w * ratio_b);
+        out.x = (a->x * ratio_a) + (b->x * ratio_b);
+        out.y = (a->y * ratio_a) + (b->y * ratio_b);
+        out.z = (a->z * ratio_a) + (b->z * ratio_b);
+    }
+    
+    return out;
+}
+
 #endif
