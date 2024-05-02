@@ -1,6 +1,6 @@
 # Simulates the RP2040 GPU. Talks to the PSoC over Serial
-from trimesh import Scene, Trimesh
-from trimesh.primitives import Sphere
+from trimesh import Scene, Trimesh, load_mesh
+from trimesh.primitives import Sphere, Capsule
 from scipy.spatial.transform import Rotation as R
 from threading import Thread
 from serial import Serial
@@ -21,7 +21,7 @@ DRAW_INSTANCED = b"\x85"
 DRAW_INSTANCED_QUAT = b"\x86"
 
 
-origin = Sphere(center=(0, 0, 0))
+origin = load_mesh("./assets/debug_camera.ply")
 scene = Scene([origin])
 meshes = dict()
 commands = Queue()
@@ -69,9 +69,11 @@ def read_loop():
             commands.put((SWAP_BUFFER,))
         elif header == SET_CAMERA:
             position = unpack("<3f", serial.read(12))
-            rotation = unpack("<3f", serial.read(12))
+            rotation = unpack("<4f", serial.read(16))
 
             assert serial.read() == PACKET_OVER
+
+            commands.put((SET_CAMERA, position, rotation))
         elif header == DRAW_INSTANCED:
             id, = unpack("<I", serial.read(4))
             num_instances, = unpack("<I", serial.read(4))
@@ -139,6 +141,17 @@ def render_loop(scene: Scene):
 
                 todelete.append(scene.add_geometry(meshes[id], transform=pose, node_name=str(meshid), geom_name=str(meshid)))
                 meshid += 1
+        elif header == SET_CAMERA:
+            position, rotation = args
+
+            pose = np.eye(4, 4)
+            pose[:3, :3] = (R.from_quat(np.roll(rotation, -1)) * R.from_rotvec(np.array([0, np.pi, 0]))).as_matrix()
+            pose[:3, 3] = position
+
+            scene.camera_transform = pose
+            
+
+            # scene.graph.update(scene.graph.nodes_geometry[0], matrix=pose)
 
 
 # Serial Thread
