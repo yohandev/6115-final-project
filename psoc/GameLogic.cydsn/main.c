@@ -54,7 +54,7 @@ int main() {
         gpu_swap_buffer();          // Send last rendered frame (N-1) to the display, swap to unused buffer (N-2)
         gpu_clear_buffer();         // Clear the buffer to black (TODO: skybox would be cool)
 
-        gpu_set_camera(World.camera.pos, World.camera.rot);
+        gpu_set_camera(Player.camera_pos, Player.camera_rot);
         gpu_draw_instanced(ASSET_STAR_DESTROYER_MESH_ID, 1, &World.star_destroyer.pos, &World.star_destroyer.rot);
         // gpu_draw_instanced(ASSET_ASTEROID_MESH_ID, WORLD_ASTEROIDS_POOL_LEN, World.asteroids.pos, World.asteroids.rot);
         gpu_draw_instanced_quat(ASSET_XWING_MESH_ID, 1, &Player.pos, &Player.rot);
