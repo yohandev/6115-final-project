@@ -161,7 +161,7 @@ static vec3 quat_rotate(const quat* q, const vec3* v) {
     return out;
 }
 
-static vec3 quat_forward(const quat* q) {
+static vec3 quat_up(const quat* q) {
     vec3 out;
     
     f32 xx = q->x * q->x;
@@ -178,20 +178,37 @@ static vec3 quat_forward(const quat* q) {
     return out;
 }
 
+static vec3 quat_forward(const quat* q) {
+    vec3 out;
+    
+    f32 xx = q->x * q->x;
+    f32 yy = q->y * q->y;
+    f32 wx = q->w * q->x;
+    f32 wy = q->w * q->y;
+    f32 xz = q->x * q->z;
+    f32 yz = q->y * q->z;
+
+    out.x = 2 * (xz + wy);
+    out.y = 2 * (yz - wx);
+    out.z = 1 - 2 * (xx + yy);
+    
+    return out;
+}
+
 static quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
     quat out;
     
-    f32 cp = cos(pitch * 0.5);
-    f32 sp = sin(pitch * 0.5);
     f32 cr = cos(roll * 0.5);
     f32 sr = sin(roll * 0.5);
+    f32 cp = cos(pitch * 0.5);
+    f32 sp = sin(pitch * 0.5);
     f32 cy = cos(yaw * 0.5);
     f32 sy = sin(yaw * 0.5);
 
-    out.w = cp * cr * cy + sp * sr * sy;
-    out.x = sp * cr * cy - cp * sr * sy;
-    out.y = cp * sr * cy + sp * cr * sy;
-    out.z = cp * cr * sy - sp * sr * cy;
+    out.w = cr * cp * cy + sr * sp * sy;
+    out.x = sr * cp * cy - cr * sp * sy;
+    out.y = cr * sp * cy + sr * cp * sy;
+    out.z = cr * cp * sy - sr * sp * cy;
 
     return out;
 }
