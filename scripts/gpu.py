@@ -131,130 +131,15 @@ def render_loop(scene: Scene):
                 meshid += 1
         elif header == DRAW_INSTANCED_QUAT:
             id, positions, rotations = args
-            
+
             for (position, rotation) in zip(positions, rotations):
                 pose = np.eye(4, 4)
                 pose[:3, :3] = R.from_quat(np.roll(rotation, -1)).as_matrix()
-                pose[:3, 3] = position / 10
+                pose[:3, 3] = position
 
                 todelete.append(scene.add_geometry(meshes[id], transform=pose, node_name=str(meshid), geom_name=str(meshid)))
                 meshid += 1
 
-
-# def parse_packet(header: PayloadType, serial: Serial):
-#     # Parsing utilities
-#     def pairwise(i):
-#         a = iter(i)
-#         return zip(a, a)
-#     read_usize = lambda: int.from_bytes(serial.read(4), "little")
-#     read_u16_array = lambda len: [unpack("h", bytes(b)) for b in pairwise(serial.read(len * 2))]
-#     read_vec3 = lambda: unpack("3f", serial.read(12))
-#     read_vec4 = lambda: unpack("4f", serial.read(16))
-#     packet_over = lambda: PayloadType(ord(serial.read())) == PayloadType.PACKET_OVER
-    
-#     # == Upload Mesh ==
-#     if header == PayloadType.UPLOAD_MESH:
-#         id = read_usize()
-#         print(f"Uploading Mesh #{id}")
-#         num_vertices = read_usize()
-#         print(f"# Vertices: {num_vertices}")
-#         vertices = read_u16_array(num_vertices * 3)
-#         num_faces = read_usize()
-#         print(f"# Faces: {num_faces}")
-#         indices = read_u16_array(num_faces * 3)
-#         num_colors = read_usize()
-#         print(f"# Colors: {num_colors}")
-#         colors = read_u16_array(num_colors * 2)
-#         print("Unpacking...")
-
-#         # Unpack and store mesh
-#         vertices = [float(v) / (1 << 8) for (v,) in vertices]
-#         # TODO: colors
-#         # meshes[id] = scene.add(Mesh([Primitive(positions=vertices, indices=indices, mode=4)]))
-#         meshes[id] = (vertices, indices)
-
-#         assert packet_over()
-#     # == Clear Buffer ==
-#     elif header == PayloadType.CLEAR_BUFFER:
-#         assert packet_over()
-#     # == Swap Buffer ==
-#     elif header == PayloadType.SWAP_BUFFER:
-#         global flush
-#         flush = True
-#         assert packet_over()
-#     # == Set Camera ==
-#     elif header == PayloadType.SET_CAMERA:
-#         pos = read_vec3()
-#         rot = read_vec3()
-
-#         cmdbuf.append((PayloadType.SET_CAMERA, (pos, rot)))
-
-#         assert packet_over()
-#     # == Draw Instanced ==
-#     elif header == PayloadType.DRAW_INSTANCED:
-#         id = read_usize()
-#         num_instances = read_usize()
-#         pos = [read_vec3() for _ in range(num_instances)]
-#         rot = [read_vec3() for _ in range(num_instances)]
-
-#         cmdbuf.append((PayloadType.DRAW_INSTANCED, (id, pos, rot)))
-
-#         assert packet_over()
-#     # == Draw Instanced (Quaternions) ==
-#     elif header == PayloadType.DRAW_INSTANCED_QUAT:
-#         id = read_usize()
-#         num_instances = read_usize()
-#         pos = [read_vec3() for _ in range(num_instances)]
-#         rot = [read_vec4() for _ in range(num_instances)]
-
-#         cmdbuf.append((PayloadType.DRAW_INSTANCED_QUAT, (id, pos, rot)))
-
-#         assert packet_over()
-#     else:
-#         raise ValueError(f"Unexpected header {header}!")
-
-# def flush_commands():
-#     global cmdbuf, flush, mesh
-    
-#     viewer.render_lock.acquire()
-#     print("Frame!")
-#     # Not efficient at all but this is essentially what happens on the MCU
-#     if mesh:
-#         scene.remove_node(mesh)
-#         mesh = None
-#     primitives = []
-#     for (cmd, args) in cmdbuf:
-#         if cmd == PayloadType.SET_CAMERA:
-#             pass # TODO
-#         elif cmd == PayloadType.DRAW_INSTANCED:
-#             id, pos, rot = args
-#             vertices, indices = meshes[id]
-            
-#             # Create instances' transformation matrices
-#             poses = np.empty((len(pos), 4, 4))
-#             poses[:, :3, :3] = R.from_euler("xyz", rot, degrees=False).as_matrix()
-#             poses[:, :3, 3] = np.array(pos)
-
-#             primitives.append(Primitive(positions=vertices, indices=indices, mode=4, poses=poses))
-                
-#                 # node = scene.add(meshes[id])
-#                 # node.translation = p
-#                 # node.rotation = Rotation.from_euler("xyz", r, degrees=False).as_quat()
-#         elif cmd == PayloadType.DRAW_INSTANCED_QUAT:
-#             id, pos, rot = args
-#             for (p, r) in zip(pos, rot):
-#                 # node = scene.add(meshes[id])
-#                 # node.translation = p
-#                 # node.rotation = (r[1], r[2], r[3], r[0])
-#                 pass
-#                 # print(f"x-wing is at {p}")
-#         else:
-#             raise ValueError(f"Unexpected command {cmd} in command buffer!")
-#     if primitives:
-#         mesh = scene.add(Mesh(primitives))
-#     cmdbuf = []
-#     flush = False
-#     viewer.render_lock.release()
 
 # Serial Thread
 Thread(target=read_loop).start()
