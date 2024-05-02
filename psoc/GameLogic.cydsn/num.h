@@ -115,7 +115,7 @@ typedef struct {
     f32 z;
 } quat;
 
-static inline quat quat_mul(const quat* a, const quat* b) {
+static quat quat_mul(const quat* a, const quat* b) {
     quat out;
 
     out.w = (a->w * b->w) - (a->x * b->x) - (a->y * b->y) - (a->z * b->z);
@@ -126,7 +126,7 @@ static inline quat quat_mul(const quat* a, const quat* b) {
     return out;
 }
 
-static inline vec3 quat_rotate(const quat* q, const vec3* v) {
+static vec3 quat_rotate(const quat* q, const vec3* v) {
     vec3 out;
     
     f32 ww = q->w * q->w;
@@ -153,7 +153,7 @@ static inline vec3 quat_rotate(const quat* q, const vec3* v) {
     return out;
 }
 
-static inline vec3 quat_forward(const quat* q) {
+static vec3 quat_forward(const quat* q) {
     vec3 out;
     
     f32 ww = q->w * q->w;
@@ -177,7 +177,7 @@ static inline vec3 quat_forward(const quat* q) {
     return out;
 }
 
-static inline quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
+static quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
     quat out;
     
     f32 cp = cos(pitch * 0.5);
@@ -195,7 +195,7 @@ static inline quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
     return out;
 }
 
-static inline quat quat_slerp(quat* a, quat* b, f32 t) {
+static quat quat_slerp(quat* a, quat* b, f32 t) {
     f32 cos_half_theta = (a->w * b->w) + (a->x * b->x) + (a->y * b->y) + (a->z * b->z);
 
     if (fabs(cos_half_theta) >= 1.0) {
@@ -220,7 +220,7 @@ static inline quat quat_slerp(quat* a, quat* b, f32 t) {
         out.y = (a->y * ratio_a) + (b->y * ratio_b);
         out.z = (a->z * ratio_a) + (b->z * ratio_b);
     }
-    
+
     return out;
 }
 
