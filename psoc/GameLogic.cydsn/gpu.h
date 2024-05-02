@@ -34,7 +34,7 @@ void gpu_clear_buffer();
 void gpu_swap_buffer();
 
 // Rendering operations
-void gpu_set_camera(vec3 pos, vec3 rot);
+void gpu_set_camera(vec3 pos, quat rot);
 void gpu_draw_instanced(usize id, usize len, vec3* pos, vec3* rot);
 void gpu_draw_instanced_quat(usize id, usize len, vec3* pos, quat* rot);
 
