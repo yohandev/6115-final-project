@@ -195,6 +195,23 @@ static vec3 quat_forward(const quat* q) {
     return out;
 }
 
+static vec3 quat_left(const quat* q) {
+    vec3 out;
+    
+    f32 yy = q->y * q->y;
+    f32 zz = q->z * q->z;
+    f32 wy = q->w * q->y;
+    f32 wz = q->w * q->z;
+    f32 xy = q->x * q->y;
+    f32 xz = q->x * q->z;
+
+    out.x = 1 - 2 * (yy + zz);
+    out.y = 2 * (xy + wz);
+    out.z = 2 * (xz - wy);
+    
+    return out;
+}
+
 static quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
     quat out;
     
@@ -240,6 +257,18 @@ static quat quat_slerp(quat* a, quat* b, f32 t) {
     }
 
     return out;
+}
+
+// Input `axis` should be normalized
+static quat quat_angle_axis(f32 angle, const vec3 axis) {
+    quat out;
+
+    f32 s = sin(angle * 0.5);
+
+    out.w = cos(angle * 0.5);
+    out.x = axis.x * s;
+    out.y = axis.y * s;
+    out.z = axis.z * s;
 }
 
 #endif
