@@ -32,6 +32,10 @@ typedef double f64;
 
 static const f32 PI = 3.1415926535897;
 
+static inline f32 randf() {
+    return 2.0 * ((f32)rand() / RAND_MAX - 0.5);
+}
+
 // Color
 typedef struct {
     u16 r: 5;
@@ -100,9 +104,9 @@ static inline vec3 vec3_scale(const vec3 a, const f32 s) {
 static inline vec3 vec3_rand(const f32 scale) {
     // Order of operation will matter when changing this to fixed point
     return (vec3){
-        .x = (f32)rand() / RAND_MAX * scale,
-        .y = (f32)rand() / RAND_MAX * scale,
-        .z = (f32)rand() / RAND_MAX * scale,
+        .x = ((f32)rand() / RAND_MAX - 0.5) * scale,
+        .y = ((f32)rand() / RAND_MAX - 0.5) * scale,
+        .z = ((f32)rand() / RAND_MAX - 0.5) * scale,
     };
 }
 
