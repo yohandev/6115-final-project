@@ -106,6 +106,14 @@ static inline vec3 vec3_rand(const f32 scale) {
     };
 }
 
+static inline vec3 vec3_lerp(const vec3 a, const vec3 b, const f32 t) {
+    return (vec3){
+        .x = a.x + (b.x - a.x) * t,
+        .y = a.y + (b.y - a.y) * t,
+        .z = a.z + (b.z - a.z) * t,
+    };
+}
+
 // Quaternion
 // Adapted from https://github.com/MartinWeigel/Quaternion
 typedef struct {
