@@ -6,6 +6,12 @@
 struct Player {
     vec3 pos;
     quat rot;
+    
+    quat target_rot;
+    quat yaw_pitch;
+    
+    vec3 camera_pos;
+    quat camera_rot;
 };
 
 extern struct Player Player;
