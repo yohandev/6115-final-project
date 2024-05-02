@@ -198,17 +198,17 @@ static vec3 quat_forward(const quat* q) {
 static quat quat_from_euler(f32 yaw, f32 pitch, f32 roll) {
     quat out;
     
-    f32 cr = cos(roll * 0.5);
-    f32 sr = sin(roll * 0.5);
     f32 cp = cos(pitch * 0.5);
     f32 sp = sin(pitch * 0.5);
+    f32 cr = cos(roll * 0.5);
+    f32 sr = sin(roll * 0.5);
     f32 cy = cos(yaw * 0.5);
     f32 sy = sin(yaw * 0.5);
 
-    out.w = cr * cp * cy + sr * sp * sy;
-    out.x = sr * cp * cy - cr * sp * sy;
-    out.y = cr * sp * cy + sr * cp * sy;
-    out.z = cr * cp * sy - sr * sp * cy;
+    out.w = cp * cr * cy + sp * sr * sy;
+    out.x = sp * cr * cy - cp * sr * sy;
+    out.y = cp * sr * cy + sp * cr * sy;
+    out.z = cp * cr * sy - sp * sr * cy;
 
     return out;
 }
