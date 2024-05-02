@@ -12,7 +12,7 @@
 # 3. Create a new color attribute in "Object Data Properties"
 # 4. Change render engine to Cycles in "Render Properties"
 # 5. Bake the texture to "Active Color Attribute"
-# 6. Export the model with ASCII and vertex colors "on"
+# 6. Export the model with ASCII and vertex colors "on". Forward axis (-Z) and up axis (+Y).
 #
 # The format should be good for maximizing the number of vertices with very little space,
 # but it breaks down a tad if using lots of colors or vertices don't occupy the full 8.8
@@ -135,4 +135,4 @@ const struct Mesh NAME_OF_MESH_HERE = {{
     """
 
 
-print(convert_mesh("./assets/star_destroyer.ply"))
+print(convert_mesh("./assets/x_wing.ply"))
