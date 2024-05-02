@@ -145,4 +145,4 @@ def render_loop(scene: Scene):
 Thread(target=read_loop).start()
 
 # UI Thread
-scene.show(callback=render_loop)
+scene.show(callback=render_loop, resolution=(1200, 800))
