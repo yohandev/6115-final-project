@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "num.h"
+#include "common/num.h"
 
 struct Player {
     vec3 pos;

@@ -1,7 +1,7 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include "num.h"
+#include "common/num.h"
 
 // TODO:
 // Overview of asteroids field algorithm:

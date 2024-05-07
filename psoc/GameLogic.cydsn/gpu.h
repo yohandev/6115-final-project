@@ -1,7 +1,7 @@
 #ifndef GPU_H
 #define GPU_H
 
-#include "num.h"
+#include "common/num.h"
 
 // Meshes overview:
 // Vertices (max of 65536) are stored in 8.8 fixed point (half of normal)
