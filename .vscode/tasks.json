@@ -13,7 +13,8 @@
             "options": {
                 "cwd": "${workspaceFolder}/rp2040/build"
             },
-            "command": "make rp2040_gpu && probe-rs run --chip rp2040 rp2040_gpu.elf",
+            // "command": "make rp2040_gpu && probe-rs run --chip rp2040 rp2040_gpu.elf",
+            "command": "make rp2040_gpu && cp rp2040_gpu.uf2 /Volumes/RPI-RP2/",
             "problemMatcher": []
         },
         {
