@@ -4,14 +4,11 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <math.h>
 
 #define len(x) (sizeof((x)) / sizeof((x)[0]))
 
-// Boolean
-typedef uint8_t bool;
-#define false ((bool)0)
-#define true ((bool)1)
 // Platform
 typedef size_t usize;
 // 8-bit

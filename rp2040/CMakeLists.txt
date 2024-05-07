@@ -13,6 +13,10 @@ add_executable(rp2040_gpu
     src/main.c
 )
 
+include_directories(rp2040_gpu
+    ../psoc/GameLogic.cydsn/common
+)
+
 # Add pico_stdlib library which aggregates commonly used features
 target_link_libraries(rp2040_gpu
     pico_stdlib
