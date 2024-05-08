@@ -29,6 +29,7 @@ target_link_libraries(rp2040_gpu PRIVATE
     pico_stdio_rtt
     hardware_pio
     hardware_interp
+    hardware_dma
 )
 
 # create map/bin/hex/uf2 file in addition to ELF.

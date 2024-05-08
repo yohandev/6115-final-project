@@ -1,6 +1,7 @@
 // Adapted from:
 // https://github.com/raspberrypi/pico-examples/tree/master/pio/st7789_lcd
 #include "pico/stdlib.h"
+#include "hardware/dma.h"
 
 #include "st7789.h"
 #include "st7789.pio.h"
@@ -58,7 +59,23 @@ void lcd_init(struct LCD* self) {
     gpio_init(self->pins.dc);
     gpio_init(self->pins.rst);
     gpio_set_dir(self->pins.dc, GPIO_OUT);
-    gpio_set_dir(self->pins.rst, GPIO_OUT);;
+    gpio_set_dir(self->pins.rst, GPIO_OUT);
+
+    if (self->dma < 0) {
+        self->dma = dma_claim_unused_channel(true);
+    }
+    dma_channel_config cfg = dma_channel_get_default_config(self->dma);
+    channel_config_set_transfer_data_size(&cfg, DMA_SIZE_8);
+    channel_config_set_read_increment(&cfg, true);
+    channel_config_set_dreq(&cfg, DREQ_PIO0_TX0);
+    dma_channel_configure(
+        self->dma,
+        &cfg,
+        self->pio == pio0 ? &pio0_hw->txf[0] : &pio1_hw->txf[0],    // Write address
+        NULL,                                                       // Don't provide a read address yet
+        (SCREEN_WIDTH * SCREEN_HEIGHT) << 1,                        // Number of writes
+        false                                                       // Don't start yet
+    );
 
     gpio_put(self->pins.rst, 1);
 
@@ -70,10 +87,8 @@ void lcd_init(struct LCD* self) {
     }
 }
 
-void lcd_put(struct LCD* self, u8* buf) {
+void lcd_put(struct LCD* self, const u8* buf) {
+    dma_channel_wait_for_finish_blocking(self->dma);
     lcd_start_pixels(self);
-
-    for (usize i = 0; i < 2 * SCREEN_WIDTH * SCREEN_HEIGHT; i++) {
-        lcd_pio_put(self->pio, self->sm, buf[i]);
-    }
+    dma_channel_set_read_addr(self->dma, buf, true);
 }

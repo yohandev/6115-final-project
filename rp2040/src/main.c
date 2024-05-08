@@ -21,6 +21,7 @@ struct LCD display = {
     },
     .pio = pio0,
     .sm = 0,
+    .dma = -1,
 };
 
 // Tested with the parts that have the height of 240 and 320
@@ -33,7 +34,7 @@ struct LCD display = {
 #define M_PI 3.14159265358979323846
 #endif
 
-u8 sbuf[SCREEN_WIDTH * SCREEN_HEIGHT * 2];
+u8 __attribute__((aligned(4))) sbuf[SCREEN_WIDTH * SCREEN_HEIGHT * 2];
 
 int main() {
     // stdio_rtt_init();
