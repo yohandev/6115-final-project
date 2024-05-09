@@ -6,7 +6,8 @@
         "stddef.h": "c",
         "stdio_rtt.h": "c",
         "raspberry_256x256_rgb565.h": "c",
-        "rasterizer.h": "c"
+        "rasterizer.h": "c",
+        "num.h": "c"
     },
     "dotnet.defaultSolution": "disable"
 }

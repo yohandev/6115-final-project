@@ -34,5 +34,9 @@ target_link_libraries(rp2040_gpu PRIVATE
     hardware_dma
 )
 
+# Enable the UART <-> USB Bridge
+pico_enable_stdio_usb(rp2040_gpu 1)
+pico_enable_stdio_uart(rp2040_gpu 0)
+
 # create map/bin/hex/uf2 file in addition to ELF.
 pico_add_extra_outputs(rp2040_gpu)

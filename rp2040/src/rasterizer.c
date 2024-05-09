@@ -1,3 +1,5 @@
+#include "pico/stdlib.h"
+
 #include "rasterizer.h"
 #include "framebuffer.h"
 #include "num.h"
@@ -42,4 +44,26 @@ void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c) 
             }
         }
     }
+}
+
+void rasterizer_triangle_bench(struct Framebuffer* sbuf, usize num_iter, f32 bound) {
+    vec2 a;
+    vec2 b;
+    vec2 c;
+    
+    printf("Starting benchmark...\n");
+    u64 start = time_us_64();
+    for (usize i = 0; i < num_iter; i++) {
+        a.x = randf() * bound;
+        a.y = randf() * bound;
+        b.x = randf() * bound;
+        b.y = randf() * bound;
+        c.x = randf() * bound;
+        c.y = randf() * bound;
+
+        rasterizer_draw_triangle(sbuf, a, b, c);
+    }
+    u64 elapsed = time_us_64() - start;
+
+    printf("Drawing %d triangles took %lldus (avg. %fus/iter).\n", num_iter, elapsed, (f32)elapsed / num_iter);
 }

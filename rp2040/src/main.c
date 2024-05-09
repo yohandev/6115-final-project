@@ -86,12 +86,13 @@ int main() {
                 framebuffer_get(sbuf, x, y) = (rgb){((colour >> 8) | (colour << 8))};
             }
         }
-        rasterizer_draw_triangle(
-            sbuf,
-            (vec2){ .x=20, .y=20 },
-            (vec2){ .x=130, .y=30 },
-            (vec2){ .x=60, .y=70 }
-        );
+        // rasterizer_draw_triangle(
+        //     sbuf,
+        //     (vec2){ .x=20, .y=20 },
+        //     (vec2){ .x=130, .y=30 },
+        //     (vec2){ .x=60, .y=70 }
+        // );
+        rasterizer_triangle_bench(sbuf, 100, 200.0);
 
         framebuffer_swap();
         lcd_put(&display, (u8*)framebuffer_get_offscreen()->pixels);
