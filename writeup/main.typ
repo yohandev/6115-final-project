@@ -56,4 +56,4 @@
     - Instead, each core has a small cache of vertices (a hash-map keyed by the vertex index) of transformed vertices that it references; i.e. it rasterizes _while_ transforming vertices.
 
 == Drawing Triangles
-(Go over the chosen algorithm using barycentric coordinates, benchmarks over implementations (floating point, fixed point, hardware accumulator). Note that fixed point implementation inherently has subpixel precision. See rasterizer.c)
+(Go over the chosen algorithm using barycentric coordinates, benchmarks over implementations (floating point, fixed point, hardware interpolator). Note that fixed point implementation inherently has subpixel precision. See rasterizer.c)
