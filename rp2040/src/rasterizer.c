@@ -5,12 +5,8 @@
 #include "framebuffer.h"
 #include "num.h"
 
-inline static fixed barycentric_coord(
-    fixed ax, fixed ay,
-    fixed bx, fixed by,
-    fixed cx, fixed cy
-) {
-    return fixed_mul(bx - ax, cy - ay) - fixed_mul(by - ay, cx - ax);
+inline static fixed barycentric_coord(vec2 a, vec2 b, vec2 c) {
+    return fixed_mul(b.x - a.x, c.y - a.y) - fixed_mul(b.y - a.y, c.x - a.x);
 }
 
 // Implementation of a triangle rasterizer using the barycentric algorithm, as described
@@ -24,19 +20,12 @@ inline static fixed barycentric_coord(
 // a point inside of a triangle (in a loop) can be further optimized to just a handful of
 // addition and shifts which the RP2040 interpolator can perform in one cycle. Of course,
 // decisive results would require proper benchmarks over different candidate algorithms.
-void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2f a, vec2f b, vec2f c) {
-    fixed ax = f32_to_fixed(a.x);
-    fixed ay = f32_to_fixed(a.y);
-    fixed bx = f32_to_fixed(b.x);
-    fixed by = f32_to_fixed(b.y);
-    fixed cx = f32_to_fixed(c.x);
-    fixed cy = f32_to_fixed(c.y);
-    
+void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c) {
     // AABB of the triangle
-    fixed min_x = min(min(ax, bx), cx);
-    fixed min_y = min(min(ay, by), cy);
-    fixed max_x = max(max(ax, bx), cx);
-    fixed max_y = max(max(ay, by), cy);
+    fixed min_x = min(min(a.x, b.x), c.x);
+    fixed min_y = min(min(a.y, b.y), c.y);
+    fixed max_x = max(max(a.x, b.x), c.x);
+    fixed max_y = max(max(a.y, b.y), c.y);
     
     // Contain within the framebuffer
     min_x = max(min_x, 0);
@@ -45,14 +34,14 @@ void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2f a, vec2f b, vec2f 
     max_y = min(max_y, i32_to_fixed(FRAME_BUFFER_HEIGHT) - FIXED_EPSILON);
 
     // Triangle setup
-    fixed A01 = ay - by, B01 = bx - ax;
-    fixed A12 = by - cy, B12 = cx - bx;
-    fixed A20 = cy - ay, B20 = ax - cx;
+    fixed A01 = a.y - b.y, B01 = b.x - a.x;
+    fixed A12 = b.y - c.y, B12 = c.x - b.x;
+    fixed A20 = c.y - a.y, B20 = a.x - c.x;
 
     // Barycentric coordinates at min. corner
-    fixed w0_row = barycentric_coord(bx, by, cx, cy, min_x, min_y);
-    fixed w1_row = barycentric_coord(cx, cy, ax, ay, min_x, min_y);
-    fixed w2_row = barycentric_coord(ax, ay, bx, by, min_x, min_y);
+    fixed w0_row = barycentric_coord(b, c, (vec2) { .x=min_x, .y=min_y });
+    fixed w1_row = barycentric_coord(c, a, (vec2) { .x=min_x, .y=min_y });
+    fixed w2_row = barycentric_coord(a, b, (vec2) { .x=min_x, .y=min_y });
 
     usize min_yi = fixed_to_i32(min_y);
     usize min_xi = fixed_to_i32(min_x);
@@ -91,20 +80,20 @@ void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2f a, vec2f b, vec2f 
     }
 }
 
-void rasterizer_triangle_bench(struct Framebuffer* sbuf, usize num_iter, f32 bound) {
-    vec2f a;
-    vec2f b;
-    vec2f c;
+void rasterizer_triangle_bench(struct Framebuffer* sbuf, usize num_iter, usize log2scale) {
+    vec2 a;
+    vec2 b;
+    vec2 c;
     
     printf("Starting benchmark...\n");
     u64 start = time_us_64();
     for (usize i = 0; i < num_iter; i++) {
-        a.x = randf() * bound;
-        a.y = randf() * bound;
-        b.x = randf() * bound;
-        b.y = randf() * bound;
-        c.x = randf() * bound;
-        c.y = randf() * bound;
+        a.x = rand() >> log2scale;
+        a.y = rand() >> log2scale;
+        b.x = rand() >> log2scale;
+        b.y = rand() >> log2scale;
+        c.x = rand() >> log2scale;
+        c.y = rand() >> log2scale;
 
         rasterizer_draw_triangle(sbuf, a, b, c);
     }
