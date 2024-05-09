@@ -45,6 +45,33 @@ typedef struct {
     u16 inner;
 } rgb;
 
+// 16.16 Fixed-Point
+typedef i32 fixed;
+
+static inline fixed f32_to_fixed(f32 f) {
+    return (fixed)(f * 65536.0f);
+}
+
+static inline f32 fixed_to_f32(fixed f) {
+    return (f32)(f / 65536.0f);
+}
+
+static inline fixed i32_to_fixed(i32 i) {
+    return (fixed)(i << 16);
+}
+
+static inline i32 fixed_to_i32(fixed f) {
+    return (i32)(f >> 16);
+}
+
+static inline fixed fixed_mul(fixed a, fixed b) {
+    return (fixed)(((i64)a * (i64)b) >> 16);
+}
+
+static inline fixed fixed_div(fixed a, fixed b) {
+    return (fixed)(((i64)a << 16) / b);
+}
+
 // 2D Vector
 typedef struct {         // TODO: fixed point
     f32 x;
