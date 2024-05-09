@@ -24,7 +24,7 @@ inline static fixed barycentric_coord(
 // a point inside of a triangle (in a loop) can be further optimized to just a handful of
 // addition and shifts which the RP2040 interpolator can perform in one cycle. Of course,
 // decisive results would require proper benchmarks over different candidate algorithms.
-void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c) {
+void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2f a, vec2f b, vec2f c) {
     fixed ax = f32_to_fixed(a.x);
     fixed ay = f32_to_fixed(a.y);
     fixed bx = f32_to_fixed(b.x);
@@ -92,9 +92,9 @@ void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c) 
 }
 
 void rasterizer_triangle_bench(struct Framebuffer* sbuf, usize num_iter, f32 bound) {
-    vec2 a;
-    vec2 b;
-    vec2 c;
+    vec2f a;
+    vec2f b;
+    vec2f c;
     
     printf("Starting benchmark...\n");
     u64 start = time_us_64();

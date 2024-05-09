@@ -79,24 +79,24 @@ static inline fixed fixed_div(fixed a, fixed b) {
 typedef struct {         // TODO: fixed point
     f32 x;
     f32 y;
-} vec2;
+} vec2f;
 
-static inline vec2 vec2_add(const vec2 a, const vec2 b) {
-    return (vec2){
+static inline vec2f vec2f_add(const vec2f a, const vec2f b) {
+    return (vec2f){
         .x = a.x + b.x,
         .y = a.y + b.y,
     };
 }
 
-static inline vec2 vec2_sub(const vec2 a, const vec2 b) {
-    return (vec2){
+static inline vec2f vec2f_sub(const vec2f a, const vec2f b) {
+    return (vec2f){
         .x = a.x - b.x,
         .y = a.y - b.y,
     };
 }
 
-static inline vec2 vec2_scale(const vec2 a, const f32 s) {
-    return (vec2){
+static inline vec2f vec2f_scale(const vec2f a, const f32 s) {
+    return (vec2f){
         .x = a.x * s,
         .y = a.y * s,
     };
@@ -107,43 +107,43 @@ typedef struct {         // TODO: fixed point
     f32 x;
     f32 y;
     f32 z;
-} vec3;
+} vec3f;
 
-static inline vec3 vec3_add(const vec3 a, const vec3 b) {
-    return (vec3){
+static inline vec3f vec3f_add(const vec3f a, const vec3f b) {
+    return (vec3f){
         .x = a.x + b.x,
         .y = a.y + b.y,
         .z = a.z + b.z,
     };
 }
 
-static inline vec3 vec3_sub(const vec3 a, const vec3 b) {
-    return (vec3){
+static inline vec3f vec3f_sub(const vec3f a, const vec3f b) {
+    return (vec3f){
         .x = a.x - b.x,
         .y = a.y - b.y,
         .z = a.z - b.z,
     };
 }
 
-static inline vec3 vec3_scale(const vec3 a, const f32 s) {
-    return (vec3){
+static inline vec3f vec3f_scale(const vec3f a, const f32 s) {
+    return (vec3f){
         .x = a.x * s,
         .y = a.y * s,
         .z = a.z * s,
     };
 }
 
-static inline vec3 vec3_rand(const f32 scale) {
+static inline vec3f vec3f_rand(const f32 scale) {
     // Order of operation will matter when changing this to fixed point
-    return (vec3){
+    return (vec3f){
         .x = ((f32)rand() / RAND_MAX - 0.5) * scale,
         .y = ((f32)rand() / RAND_MAX - 0.5) * scale,
         .z = ((f32)rand() / RAND_MAX - 0.5) * scale,
     };
 }
 
-static inline vec3 vec3_lerp(const vec3 a, const vec3 b, const f32 t) {
-    return (vec3){
+static inline vec3f vec3f_lerp(const vec3f a, const vec3f b, const f32 t) {
+    return (vec3f){
         .x = a.x + (b.x - a.x) * t,
         .y = a.y + (b.y - a.y) * t,
         .z = a.z + (b.z - a.z) * t,
@@ -170,8 +170,8 @@ static quat quat_mul(const quat* a, const quat* b) {
     return out;
 }
 
-static vec3 quat_rotate(const quat* q, const vec3* v) {
-    vec3 out;
+static vec3f quat_rotate(const quat* q, const vec3f* v) {
+    vec3f out;
     
     f32 ww = q->w * q->w;
     f32 xx = q->x * q->x;
@@ -197,8 +197,8 @@ static vec3 quat_rotate(const quat* q, const vec3* v) {
     return out;
 }
 
-static vec3 quat_up(const quat* q) {
-    vec3 out;
+static vec3f quat_up(const quat* q) {
+    vec3f out;
     
     f32 xx = q->x * q->x;
     f32 zz = q->z * q->z;
@@ -214,8 +214,8 @@ static vec3 quat_up(const quat* q) {
     return out;
 }
 
-static vec3 quat_forward(const quat* q) {
-    vec3 out;
+static vec3f quat_forward(const quat* q) {
+    vec3f out;
     
     f32 xx = q->x * q->x;
     f32 yy = q->y * q->y;
@@ -231,8 +231,8 @@ static vec3 quat_forward(const quat* q) {
     return out;
 }
 
-static vec3 quat_left(const quat* q) {
-    vec3 out;
+static vec3f quat_left(const quat* q) {
+    vec3f out;
     
     f32 yy = q->y * q->y;
     f32 zz = q->z * q->z;
@@ -296,7 +296,7 @@ static quat quat_slerp(quat* a, quat* b, f32 t) {
 }
 
 // Input `axis` should be normalized
-static quat quat_angle_axis(f32 angle, const vec3 axis) {
+static quat quat_angle_axis(f32 angle, const vec3f axis) {
     quat out;
 
     f32 s = sin(angle * 0.5);

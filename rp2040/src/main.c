@@ -88,9 +88,9 @@ int main() {
         }
         // rasterizer_draw_triangle(
         //     sbuf,
-        //     (vec2){ .x=20, .y=20 },
-        //     (vec2){ .x=130, .y=30 },
-        //     (vec2){ .x=200, .y=200 }
+        //     (vec2f){ .x=20, .y=20 },
+        //     (vec2f){ .x=130, .y=30 },
+        //     (vec2f){ .x=200, .y=200 }
         // );
         rasterizer_triangle_bench(sbuf, 100, 200.0);
 

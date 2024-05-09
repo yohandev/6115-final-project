@@ -34,9 +34,9 @@ void gpu_clear_buffer();
 void gpu_swap_buffer();
 
 // Rendering operations
-void gpu_set_camera(vec3 pos, quat rot);
-void gpu_draw_instanced(usize id, usize len, vec3* pos, vec3* rot);
-void gpu_draw_instanced_quat(usize id, usize len, vec3* pos, quat* rot);
-void gpu_draw_instanced_scale(usize id, usize len, vec3* pos, vec3* rot, f32* scale);
+void gpu_set_camera(vec3f pos, quat rot);
+void gpu_draw_instanced(usize id, usize len, vec3f* pos, vec3f* rot);
+void gpu_draw_instanced_quat(usize id, usize len, vec3f* pos, quat* rot);
+void gpu_draw_instanced_scale(usize id, usize len, vec3f* pos, vec3f* rot, f32* scale);
 
 #endif

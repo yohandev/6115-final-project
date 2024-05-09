@@ -81,17 +81,17 @@ void gpu_swap_buffer() {
     UART_KitProg_PutChar(PACKET_OVER);
 }
 
-void gpu_set_camera(vec3 pos, quat rot) {
+void gpu_set_camera(vec3f pos, quat rot) {
     // Header
     UART_KitProg_PutChar(SET_CAMERA);
     // Payload
-    UART_KitProg_PutArray((u8*)&pos, sizeof(vec3));
+    UART_KitProg_PutArray((u8*)&pos, sizeof(vec3f));
     UART_KitProg_PutArray((u8*)&rot, sizeof(quat));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
 
-void gpu_draw_instanced(usize id, usize len, vec3* pos, vec3* rot) {
+void gpu_draw_instanced(usize id, usize len, vec3f* pos, vec3f* rot) {
     // Header
     UART_KitProg_PutChar(DRAW_INSTANCED);
     // Mesh identifier
@@ -99,13 +99,13 @@ void gpu_draw_instanced(usize id, usize len, vec3* pos, vec3* rot) {
     // Amount of instances
     UART_KitProg_PutArray((u8*)&len, sizeof(usize));
     // Transformations
-    UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3));
-    UART_KitProg_PutMany((u8*)rot, len * sizeof(vec3));
+    UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3f));
+    UART_KitProg_PutMany((u8*)rot, len * sizeof(vec3f));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
 
-void gpu_draw_instanced_quat(usize id, usize len, vec3* pos, quat* rot) {
+void gpu_draw_instanced_quat(usize id, usize len, vec3f* pos, quat* rot) {
     // Header
     UART_KitProg_PutChar(DRAW_INSTANCED_QUAT);
     // Mesh identifier
@@ -113,13 +113,13 @@ void gpu_draw_instanced_quat(usize id, usize len, vec3* pos, quat* rot) {
     // Amount of instances
     UART_KitProg_PutArray((u8*)&len, sizeof(usize));
     // Transformations
-    UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3));
+    UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3f));
     UART_KitProg_PutMany((u8*)rot, len * sizeof(quat));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
 }
 
-void gpu_draw_instanced_scale(usize id, usize len, vec3* pos, vec3* rot, f32* scale) {
+void gpu_draw_instanced_scale(usize id, usize len, vec3f* pos, vec3f* rot, f32* scale) {
     // Header
     UART_KitProg_PutChar(DRAW_INSTANCED_SCALE);
     // Mesh identifier
@@ -127,8 +127,8 @@ void gpu_draw_instanced_scale(usize id, usize len, vec3* pos, vec3* rot, f32* sc
     // Amount of instances
     UART_KitProg_PutArray((u8*)&len, sizeof(usize));
     // Transformations
-    UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3));
-    UART_KitProg_PutMany((u8*)rot, len * sizeof(vec3));
+    UART_KitProg_PutMany((u8*)pos, len * sizeof(vec3f));
+    UART_KitProg_PutMany((u8*)rot, len * sizeof(vec3f));
     UART_KitProg_PutMany((u8*)scale, len * sizeof(f32));
     // Footer
     UART_KitProg_PutChar(PACKET_OVER);
