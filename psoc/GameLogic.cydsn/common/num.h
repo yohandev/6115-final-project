@@ -46,7 +46,8 @@ typedef struct {
 } rgb;
 
 // 16.16 Fixed-Point
-typedef i32 fixed;
+typedef i32 fixed32;
+typedef fixed32 fixed;
 
 static const fixed FIXED_EPSILON = 1;
 static const fixed FIXED_ONE = 1 << 16;
@@ -73,6 +74,36 @@ static inline fixed fixed_mul(fixed a, fixed b) {
 
 static inline fixed fixed_div(fixed a, fixed b) {
     return (fixed)(((i64)a << 16) / b);
+}
+
+// 8.8 Fixed_Point
+typedef i16 fixed16;
+
+static const fixed16 FIXED16_EPSILON = 1;
+static const fixed16 FIXED16_ONE = 1 << 8;
+
+static inline fixed16 f32_to_fixed16(f32 f) {
+    return (fixed16)(f * 256.0f);
+}
+
+static inline f32 fixed16_to_f32(fixed16 f) {
+    return (f32)(f / 256.0f);
+}
+
+static inline fixed16 i32_to_fixed16(i32 i) {
+    return (fixed16)(i << 8);
+}
+
+static inline i32 fixed16_to_i32(fixed16 f) {
+    return (i32)(f >> 8);
+}
+
+static inline fixed16 fixed16_mul(fixed16 a, fixed16 b) {
+    return (fixed16)(((i32)a * (i32)b) >> 8);
+}
+
+static inline fixed16 fixed16_div(fixed16 a, fixed16 b) {
+    return (fixed16)(((i32)a << 8) / b);
 }
 
 // 2D Vector
