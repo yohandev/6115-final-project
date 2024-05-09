@@ -14,7 +14,9 @@ inline static fixed barycentric_coord(
 }
 
 // Implementation of a triangle rasterizer using the barycentric algorithm, as described
-// here: https://fgiesen.wordpress.com/2013/02/08/triangle-rasterization-in-practice/
+// here:
+// https://fgiesen.wordpress.com/2013/02/08/triangle-rasterization-in-practice/
+// https://fgiesen.wordpress.com/2013/02/10/optimizing-the-basic-rasterizer/
 // 
 // The intution for choosing this algorithm is that since the pixel buffer is so small,
 // loop over an AABB might actually be faster than the overhead of e.g. bresenham algorithms
@@ -42,18 +44,39 @@ void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c) 
     max_x = min(max_x, i32_to_fixed(FRAME_BUFFER_WIDTH) - FIXED_EPSILON);
     max_y = min(max_y, i32_to_fixed(FRAME_BUFFER_HEIGHT) - FIXED_EPSILON);
 
+    // Triangle setup
+    fixed A01 = ay - by, B01 = bx - ax;
+    fixed A12 = by - cy, B12 = cx - bx;
+    fixed A20 = cy - ay, B20 = ax - cx;
+
+    // Barycentric coordinates at min. corner
+    fixed w0_row = barycentric_coord(bx, by, cx, cy, min_x, min_y);
+    fixed w1_row = barycentric_coord(cx, cy, ax, ay, min_x, min_y);
+    fixed w2_row = barycentric_coord(ax, ay, bx, by, min_x, min_y);
+
     // Draw
     for (fixed y = min_y; y <= max_y; y += FIXED_ONE) {
-        for (fixed x = min_x; x <= max_x; x += FIXED_ONE) {
-            fixed w0 = barycentric_coord(bx, by, cx, by, x, y);
-            fixed w1 = barycentric_coord(cx, cy, ax, ay, x, y);
-            fixed w2 = barycentric_coord(ax, ay, bx, by, x, y);
+        // Barycentric coordinates at start of row
+        fixed w0 = w0_row;
+        fixed w1 = w1_row;
+        fixed w2 = w2_row;
 
+        for (fixed x = min_x; x <= max_x; x += FIXED_ONE) {
             // If p is on or inside all edges, render pixel.
             if (w0 >= 0 && w1 >= 0 && w2 >= 0) {
                 framebuffer_get(sbuf, fixed_to_i32(x), fixed_to_i32(y)) = (rgb){ 0b11111000000 };
             }
+
+            // One step to the right
+            w0 += A12;
+            w1 += A20;
+            w2 += A01;
         }
+
+        // One row step
+        w0_row += B12;
+        w1_row += B20;
+        w2_row += B01;
     }
 }
 

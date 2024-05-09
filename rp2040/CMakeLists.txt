@@ -1,5 +1,15 @@
 cmake_minimum_required(VERSION 3.13)
 
+# if(NOT CMAKE_BUILD_TYPE)
+#     set(CMAKE_BUILD_TYPE Release)
+# endif()
+
+# message(CMAKE_BUILD_TYPE="${CMAKE_BUILD_TYPE}")
+
+# set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+# set(CMAKE_CXX_FLAGS_DEBUG "-g")
+# set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
 include(pico-sdk/pico_sdk_init.cmake)
 project(rp2040_gpu)
 
