@@ -17,6 +17,8 @@ pico_generate_pio_header(rp2040_gpu
 target_sources(rp2040_gpu PRIVATE
     src/main.c
     src/st7789.c
+    src/framebuffer.c
+    src/rasterizer.c
 )
 include_directories(rp2040_gpu
     ../psoc/GameLogic.cydsn/common

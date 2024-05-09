@@ -7,9 +7,10 @@
 #include "hardware/gpio.h"
 #include "hardware/interp.h"
 
-#include "st7789_lcd.pio.h"
 #include "raspberry_256x256_rgb565.h"
 
+#include "framebuffer.h"
+#include "rasterizer.h"
 #include "st7789.h"
 
 struct LCD display = {
@@ -34,10 +35,7 @@ struct LCD display = {
 #define M_PI 3.14159265358979323846
 #endif
 
-u8 __attribute__((aligned(4))) sbuf[SCREEN_WIDTH * SCREEN_HEIGHT * 2];
-
 int main() {
-    // stdio_rtt_init();
     stdio_init_all();
 
     lcd_init(&display);
@@ -76,6 +74,8 @@ int main() {
         interp0->base[0] = rotate[0];
         interp0->base[1] = rotate[2];
 
+        struct Framebuffer* sbuf = framebuffer_get_current();
+
         usize i = 0;
         for (int y = 0; y < SCREEN_HEIGHT; ++y) {
             interp0->accum[0] = rotate[1] * y;
@@ -83,10 +83,17 @@ int main() {
             for (int x = 0; x < SCREEN_WIDTH; ++x) {
                 uint16_t colour = *(uint16_t *) (interp0->pop[2]);
 
-                sbuf[i++] = colour >> 8;
-                sbuf[i++] = colour & 0xff;
+                framebuffer_get(sbuf, x, y) = (rgb){((colour >> 8) | (colour << 8))};
             }
         }
-        lcd_put(&display, sbuf);
+        rasterizer_draw_triangle(
+            sbuf,
+            (vec2){ .x=20, .y=20 },
+            (vec2){ .x=130, .y=30 },
+            (vec2){ .x=60, .y=70 }
+        );
+
+        framebuffer_swap();
+        lcd_put(&display, (u8*)framebuffer_get_offscreen()->pixels);
     }
 }

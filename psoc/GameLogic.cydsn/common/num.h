@@ -8,6 +8,8 @@
 #include <math.h>
 
 #define len(x) (sizeof((x)) / sizeof((x)[0]))
+#define min(a, b) (((a) < (b)) ? (a) : (b))
+#define max(a, b) (((a) > (b)) ? (a) : (b))
 
 // Platform
 typedef size_t usize;
@@ -34,10 +36,13 @@ static inline f32 randf() {
 }
 
 // Color
+// typedef struct {
+//     u16 r: 5;
+//     u16 g: 6;
+//     u16 b: 5;
+// } rgb;
 typedef struct {
-    u16 r: 5;
-    u16 g: 6;
-    u16 b: 5;
+    u16 inner;
 } rgb;
 
 // 2D Vector
