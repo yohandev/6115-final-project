@@ -76,7 +76,7 @@ static inline fixed fixed_div(fixed a, fixed b) {
 }
 
 // 2D Vector
-typedef struct {         // TODO: fixed point
+typedef struct {
     f32 x;
     f32 y;
 } vec2f;
@@ -102,8 +102,35 @@ static inline vec2f vec2f_scale(const vec2f a, const f32 s) {
     };
 }
 
+// 2D Vector (Fixed Point)
+typedef struct {
+    fixed x;
+    fixed y;
+} vec2;
+
+static inline vec2 vec2_add(const vec2 a, const vec2 b) {
+    return (vec2){
+        .x = a.x + b.x,
+        .y = a.y + b.y,
+    };
+}
+
+static inline vec2 vec2_sub(const vec2 a, const vec2 b) {
+    return (vec2){
+        .x = a.x - b.x,
+        .y = a.y - b.y,
+    };
+}
+
+static inline vec2 vec2_scale(const vec2 a, const fixed s) {
+    return (vec2){
+        .x = fixed_mul(a.x, s),
+        .y = fixed_mul(a.y, s),
+    };
+}
+
 // 3D Vector
-typedef struct {         // TODO: fixed point
+typedef struct {
     f32 x;
     f32 y;
     f32 z;
@@ -147,6 +174,37 @@ static inline vec3f vec3f_lerp(const vec3f a, const vec3f b, const f32 t) {
         .x = a.x + (b.x - a.x) * t,
         .y = a.y + (b.y - a.y) * t,
         .z = a.z + (b.z - a.z) * t,
+    };
+}
+
+// 3D Vector (Fixed Point)
+typedef struct {
+    fixed x;
+    fixed y;
+    fixed z;
+} vec3;
+
+static inline vec3 vec3_add(const vec3 a, const vec3 b) {
+    return (vec3){
+        .x = a.x + b.x,
+        .y = a.y + b.y,
+        .z = a.z + b.z,
+    };
+}
+
+static inline vec3 vec3_sub(const vec3 a, const vec3 b) {
+    return (vec3){
+        .x = a.x - b.x,
+        .y = a.y - b.y,
+        .z = a.z - b.z,
+    };
+}
+
+static inline vec3 vec3_scale(const vec3 a, const fixed s) {
+    return (vec3){
+        .x = fixed_mul(a.x, s),
+        .y = fixed_mul(a.y, s),
+        .z = fixed_mul(a.z, s),
     };
 }
 
