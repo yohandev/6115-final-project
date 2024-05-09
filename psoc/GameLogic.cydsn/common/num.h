@@ -48,6 +48,9 @@ typedef struct {
 // 16.16 Fixed-Point
 typedef i32 fixed;
 
+static const fixed FIXED_EPSILON = 1;
+static const fixed FIXED_ONE = 1 << 16;
+
 static inline fixed f32_to_fixed(f32 f) {
     return (fixed)(f * 65536.0f);
 }

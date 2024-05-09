@@ -1,11 +1,16 @@
 #include "pico/stdlib.h"
+#include <stdio.h>
 
 #include "rasterizer.h"
 #include "framebuffer.h"
 #include "num.h"
 
-inline static f32 barycentric_coord(vec2 a, vec2 b, vec2 c) {
-    return (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x);
+inline static fixed barycentric_coord(
+    fixed ax, fixed ay,
+    fixed bx, fixed by,
+    fixed cx, fixed cy
+) {
+    return fixed_mul(bx - ax, cy - ay) - fixed_mul(by - ay, cx - ax);
 }
 
 // Implementation of a triangle rasterizer using the barycentric algorithm, as described
@@ -18,29 +23,35 @@ inline static f32 barycentric_coord(vec2 a, vec2 b, vec2 c) {
 // addition and shifts which the RP2040 accumulator can perform in one cycle. Of course,
 // decisive results would require proper benchmarks over different candidate algorithms.
 void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c) {
+    fixed ax = f32_to_fixed(a.x);
+    fixed ay = f32_to_fixed(a.y);
+    fixed bx = f32_to_fixed(b.x);
+    fixed by = f32_to_fixed(b.y);
+    fixed cx = f32_to_fixed(c.x);
+    fixed cy = f32_to_fixed(c.y);
+    
     // AABB of the triangle
-    f32 min_x = min(min(a.x, b.x), c.x);
-    f32 min_y = min(min(a.y, b.y), c.y);
-    f32 max_x = max(max(a.x, b.x), c.x);
-    f32 max_y = max(max(a.y, b.y), c.y);
+    fixed min_x = min(min(ax, bx), cx);
+    fixed min_y = min(min(ay, by), cy);
+    fixed max_x = max(max(ax, bx), cx);
+    fixed max_y = max(max(ay, by), cy);
     
     // Contain within the framebuffer
     min_x = max(min_x, 0);
     min_y = max(min_y, 0);
-    max_x = min(max_x, FRAME_BUFFER_WIDTH - 1e-4);
-    max_y = min(max_y, FRAME_BUFFER_HEIGHT - 1e-4);
+    max_x = min(max_x, i32_to_fixed(FRAME_BUFFER_WIDTH) - FIXED_EPSILON);
+    max_y = min(max_y, i32_to_fixed(FRAME_BUFFER_HEIGHT) - FIXED_EPSILON);
 
     // Draw
-    vec2 p;
-    for (p.y = min_y; p.y < max_y; p.y += 1.0) {
-        for (p.x = min_x; p.x < max_x; p.x += 1.0) {
-            int w0 = barycentric_coord(b, c, p);
-            int w1 = barycentric_coord(c, a, p);
-            int w2 = barycentric_coord(a, b, p);
+    for (fixed y = min_y; y <= max_y; y += FIXED_ONE) {
+        for (fixed x = min_x; x <= max_x; x += FIXED_ONE) {
+            fixed w0 = barycentric_coord(bx, by, cx, by, x, y);
+            fixed w1 = barycentric_coord(cx, cy, ax, ay, x, y);
+            fixed w2 = barycentric_coord(ax, ay, bx, by, x, y);
 
             // If p is on or inside all edges, render pixel.
             if (w0 >= 0 && w1 >= 0 && w2 >= 0) {
-                framebuffer_get(sbuf, (usize)p.x, (usize)p.y) = (rgb){ 0b11111 };
+                framebuffer_get(sbuf, fixed_to_i32(x), fixed_to_i32(y)) = (rgb){ 0b11111000000 };
             }
         }
     }
