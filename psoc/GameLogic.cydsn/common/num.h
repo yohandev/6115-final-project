@@ -239,6 +239,13 @@ static inline vec3 vec3_scale(const vec3 a, const fixed s) {
     };
 }
 
+// 3D Vector (8.8 Fixed Point)
+typedef struct {
+    fixed16 x;
+    fixed16 y;
+    fixed16 z;
+} vec3s;
+
 // Quaternion
 // Adapted from https://github.com/MartinWeigel/Quaternion
 typedef struct {
@@ -394,6 +401,71 @@ static quat quat_angle_axis(f32 angle, const vec3f axis) {
     out.x = axis.x * s;
     out.y = axis.y * s;
     out.z = axis.z * s;
+}
+
+typedef struct {
+    fixed16 inner[4][4]
+} mat4s;
+
+// Might have a slight speed adventage thanks to single-cycle 32-bit hardware
+// multiplier. Probably wise to only do this at the last stage (i.e. MVP * vertex)
+// to avoid compounding error
+static vec3 mat4s_apply_vec3s(const mat4s* m, const vec3s v) {
+    fixed out[4] = { 0, 0, 0, 0 };
+    for (usize i = 0; i < 4; i++) {
+        for (usize j = 0; j < 4; j++) {
+            out[j] += (i32)m->inner[j][i] * (i32)((fixed16*)&v)[i];
+        }
+    }
+    return (vec3) {
+        .x = fixed_div(out[0], out[3]),
+        .y = fixed_div(out[1], out[3]),
+        .z = fixed_div(out[2], out[3]),
+    };
+}
+
+typedef struct {
+    f32 inner[4][4]
+} mat4f;
+
+static inline mat4f mat4f_zero() {
+    return (mat4f) {
+        { 0, 0, 0, 0 },
+        { 0, 0, 0, 0 },
+        { 0, 0, 0, 0 },
+        { 0, 0, 0, 0 },
+    };
+}
+
+static inline mat4f mat4f_identity() {
+    return (mat4f) {
+        { 1, 0, 0, 0 },
+        { 0, 1, 0, 0 },
+        { 0, 0, 1, 0 },
+        { 0, 0, 0, 1 },
+    };
+}
+
+static mat4f mat4f_mul(const mat4f* a, const mat4f* b) {
+    mat4f out = mat4f_zero();
+    for (usize i = 0; i < 4; i++) {
+        for (usize j = 0; j < 4; j++) {
+            for (usize k = 0; k < 4; k++) {
+                out.inner[i][j] += a->inner[i][k] * b->inner[k][j];
+            }
+        }
+    }
+    return out;
+}
+
+static mat4s mat4f_to_mat4s(const mat4f* m) {
+    mat4s out;
+    for (usize i = 0; i < 4; i++) {
+        for (usize j = 0; i < 4; j++) {
+            out.inner[i][j] = f32_to_fixed16(m->inner[i][j]);
+        }
+    }
+    return out;
 }
 
 #endif
