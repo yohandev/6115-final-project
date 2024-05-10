@@ -8,6 +8,7 @@
 #include "hardware/interp.h"
 
 #include "raspberry_256x256_rgb565.h"
+#include "monke.h"
 
 #include "framebuffer.h"
 #include "rasterizer.h"
@@ -92,7 +93,8 @@ int main() {
         //     (vec2f){ .x=130, .y=30 },
         //     (vec2f){ .x=200, .y=200 }
         // );
-        rasterizer_triangle_bench(sbuf, 100, 9);
+        // rasterizer_triangle_bench(sbuf, 100, 9);
+        rasterizer_draw_mesh(&HMMM_MONKE, sbuf);
 
         framebuffer_swap();
         lcd_put(&display, (u8*)framebuffer_get_offscreen()->pixels);

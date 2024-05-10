@@ -108,10 +108,10 @@ def convert_mesh(path):
     return f"""
 // Origin mesh: {path}
 // Converted using scripts/meshgen.py
-#include "gpu.h"
-#include "num.h"
+#include "common/mesh.h"
+#include "common/num.h"
 
-static const i16 VERTICES[] = {{
+static const fixed16 VERTICES[] = {{
     {nl.join(f"{x}, {y}, {z}," for (x, y, z) in vertices)}
 }};
 
@@ -135,4 +135,4 @@ const struct Mesh NAME_OF_MESH_HERE = {{
     """
 
 
-print(convert_mesh("./assets/asteroid.ply"))
+print(convert_mesh("/Users/yohan/Downloads/monke.ply"))

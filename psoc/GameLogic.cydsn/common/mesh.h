@@ -1,7 +1,7 @@
 #ifndef MESH_H
 #define MESH_H
 
-#include "common/num.h"
+#include "num.h"
 
 // Meshes overview:
 // Vertices (max of 65536) are stored in 8.8 fixed point (half of normal)
