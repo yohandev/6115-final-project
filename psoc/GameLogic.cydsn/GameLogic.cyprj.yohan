@@ -560,6 +560,18 @@
 </dependency_info>
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Release@CortexM3" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
+<file name=".\CortexM3\ARM_GCC_493\Release\asteroid_mesh.o">
+<dep name=".\assets\asteroid_mesh.c" />
+<dep name=".\common\mesh.h" />
+<dep name=".\common\num.h" />
+<dep name=".\gpu.h" />
+<dep name=".\CortexM3\ARM_GCC_493\Release\common\num.h" />
+</file>
+<file name=".\assets\asteroid_mesh.c" />
+<file name=".\common\mesh.h" />
+<file name=".\common\num.h" />
+<file name=".\gpu.h" />
+<file name=".\CortexM3\ARM_GCC_493\Release\common\num.h" />
 <file name=".\CortexM3\ARM_GCC_493\Release\player.o">
 <dep name=".\gamepad.h" />
 <dep name=".\num.h" />
@@ -572,13 +584,6 @@
 <file name=".\player.c" />
 <file name=".\player.h" />
 <file name=".\time.h" />
-<file name=".\CortexM3\ARM_GCC_493\Release\asteroid_mesh.o">
-<dep name=".\assets\asteroid_mesh.c" />
-<dep name=".\gpu.h" />
-<dep name=".\num.h" />
-</file>
-<file name=".\assets\asteroid_mesh.c" />
-<file name=".\gpu.h" />
 <file name=".\CortexM3\ARM_GCC_493\Release\star_destroyer_mesh.o">
 <dep name=".\assets\star_destroyer_mesh.c" />
 <dep name=".\gpu.h" />
@@ -2293,7 +2298,7 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="133591593079263408" />
+<deps_time v="133601441406300615" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 </userData>

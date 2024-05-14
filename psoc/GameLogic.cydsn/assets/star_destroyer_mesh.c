@@ -1,7 +1,7 @@
 // Origin mesh: ./assets/star_destroyer.ply
 // Converted using scripts/meshgen.py
 #include "gpu.h"
-#include "num.h"
+#include "common/num.h"
 
 static const i16 VERTICES[] = {
     -8219, -389, 2107,
@@ -6419,8 +6419,8 @@ static const u16 INDICES[] = {
 };
 
 static const struct ColorRange COLORS[] = {
-    { 0, { .r=0, .g=0, .b=0 }},
-    { 651, { .r=31, .g=0, .b=31 }},
+    { 0, { 0 }},
+    { 651, { 0 }},
 };
 
 const struct Mesh ASSET_STAR_DESTROYER_MESH = {

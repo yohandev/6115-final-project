@@ -1,7 +1,7 @@
 // Origin mesh: ./assets/asteroid.ply
 // Converted using scripts/meshgen.py
 #include "gpu.h"
-#include "num.h"
+#include "common/num.h"
 
 static const i16 VERTICES[] = {
     153, -27, 180,
@@ -72,7 +72,7 @@ static const u16 INDICES[] = {
 };
 
 static const struct ColorRange COLORS[] = {
-    { 0, { .r=0, .g=0, .b=0 }},
+    { 0, { 0 }},
 };
 
 const struct Mesh ASSET_ASTEROID_MESH = {
