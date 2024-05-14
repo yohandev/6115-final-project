@@ -37,6 +37,7 @@ struct LCD display = {
 #endif
 
 int main() {
+    set_sys_clock_khz(250000, true);
     stdio_init_all();
 
     lcd_init(&display);
@@ -94,7 +95,17 @@ int main() {
         //     (vec2f){ .x=200, .y=200 }
         // );
         // rasterizer_triangle_bench(sbuf, 100, 9);
-        rasterizer_draw_mesh(&HMMM_MONKE, sbuf);
+
+        mat4f translation = mat4f_translation((vec3f) {
+            .x=0.0,
+            .y=0,
+            .z=20.0,
+        });
+        mat4f rotation = mat4f_rotation_y(theta);
+        mat4f mvp = mat4f_mul(&translation, &rotation);
+        mat4s mvps = mat4f_to_mat4s(&mvp);
+
+        rasterizer_draw_mesh(sbuf, &HMMM_MONKE, &mvps);
 
         framebuffer_swap();
         lcd_put(&display, (u8*)framebuffer_get_offscreen()->pixels);

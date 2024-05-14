@@ -6,7 +6,7 @@
 #include "st7789.h"
 #include "st7789.pio.h"
 
-#define SERIAL_CLK_DIV 1.f
+#define SERIAL_CLK_DIV 2.f
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 160
 

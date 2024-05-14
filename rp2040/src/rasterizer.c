@@ -102,27 +102,7 @@ void rasterizer_triangle_bench(struct Framebuffer* sbuf, usize num_iter, usize l
     printf("Drawing %d triangles took %lldus (avg. %fus/iter).\n", num_iter, elapsed, (f32)elapsed / num_iter);
 }
 
-vec2 vertex_to_screen_space(vec3 pos) {
-    // TODO: lol
-    fixed z = pos.z + f32_to_fixed(0.1);
-    if (z == 0) {
-        z = FIXED_EPSILON;
-    }
-    return (vec2) {
-        .x = fixed_div(pos.x, z) + i32_to_fixed(FRAME_BUFFER_WIDTH / 2),
-        .y = fixed_div(pos.y, z) + i32_to_fixed(FRAME_BUFFER_HEIGHT / 2),
-    };
-}
-
-inline static vec3 fixed16_to_vec3(const fixed16* v0) {
-    return (vec3) {
-        .x = (fixed)v0[0] << 8,
-        .y = (fixed)v0[1] << 8,
-        .y = (fixed)v0[2] << 8,
-    };
-}
-
-void rasterizer_draw_mesh(const struct Mesh* mesh, struct Framebuffer* sbuf) {
+void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, const mat4s* mvp) {
     struct {
         vec2 pos;
         u16 idx;
@@ -145,13 +125,27 @@ void rasterizer_draw_mesh(const struct Mesh* mesh, struct Framebuffer* sbuf) {
             // to cache all the screen space vertices but a small cache helps with
             // wasted computation.
             if (screen_space_cache[hash].idx != idx) {
-                vec3 pos = fixed16_to_vec3(&mesh->vertices[idx * 3]);
-                vec2 spos = vertex_to_screen_space(pos);
+                vec3 pos = mat4s_apply_vec3s(mvp, (vec3s) {
+                    .x = mesh->vertices[idx * 3 + 0],
+                    .y = mesh->vertices[idx * 3 + 1],
+                    .z = mesh->vertices[idx * 3 + 2],
+                });
+                vec2 out;
+                if (pos.z != 0) {
+                    out.x = fixed_mul(fixed_div(pos.x, pos.z), i32_to_fixed(FRAME_BUFFER_WIDTH));
+                    out.y = fixed_mul(fixed_div(pos.y, pos.z), i32_to_fixed(FRAME_BUFFER_HEIGHT));
 
-                screen_space_cache[hash].pos = spos;
+                    out.x += i32_to_fixed(FRAME_BUFFER_WIDTH / 2);
+                    out.y += i32_to_fixed(FRAME_BUFFER_HEIGHT / 2);
+                }
+
+                screen_space_cache[hash].pos = out;
                 screen_space_cache[hash].idx = idx;
             }
-            pts[j] = screen_space_cache[hash].pos;
+            pts[j] = (vec2) {
+                .x = screen_space_cache[hash].pos.x,
+                .y = screen_space_cache[hash].pos.y,
+            };
         }
 
         // Rasterize face
