@@ -404,18 +404,31 @@ static quat quat_angle_axis(f32 angle, const vec3f axis) {
 }
 
 typedef struct {
-    fixed16 inner[4][4]
+    fixed16 inner[4][4];
 } mat4s;
+
+static inline mat4s mat4s_identity() {
+    return (mat4s) {{
+        { 1<<8, 0, 0, 0 },
+        { 0, 1<<8, 0, 0 },
+        { 0, 0, 1<<8, 0 },
+        { 0, 0, 0, 1<<8 },
+    }};
+}
 
 // Might have a slight speed adventage thanks to single-cycle 32-bit hardware
 // multiplier. Probably wise to only do this at the last stage (i.e. MVP * vertex)
 // to avoid compounding error
 static vec3 mat4s_apply_vec3s(const mat4s* m, const vec3s v) {
     fixed out[4] = { 0, 0, 0, 0 };
+    fixed16 in[4] = { v.x, v.y, v.z, FIXED16_ONE };
     for (usize i = 0; i < 4; i++) {
         for (usize j = 0; j < 4; j++) {
-            out[j] += (i32)m->inner[j][i] * (i32)((fixed16*)&v)[i];
+            out[j] += (i32)m->inner[j][i] * (i32)in[i];
         }
+    }
+    if (out[3] == 0) {
+        return (vec3) { 0, 0, 0 };
     }
     return (vec3) {
         .x = fixed_div(out[0], out[3]),
@@ -425,25 +438,25 @@ static vec3 mat4s_apply_vec3s(const mat4s* m, const vec3s v) {
 }
 
 typedef struct {
-    f32 inner[4][4]
+    f32 inner[4][4];
 } mat4f;
 
 static inline mat4f mat4f_zero() {
-    return (mat4f) {
+    return (mat4f) {{
         { 0, 0, 0, 0 },
         { 0, 0, 0, 0 },
         { 0, 0, 0, 0 },
         { 0, 0, 0, 0 },
-    };
+    }};
 }
 
 static inline mat4f mat4f_identity() {
-    return (mat4f) {
+    return (mat4f) {{
         { 1, 0, 0, 0 },
         { 0, 1, 0, 0 },
         { 0, 0, 1, 0 },
         { 0, 0, 0, 1 },
-    };
+    }};
 }
 
 static mat4f mat4f_mul(const mat4f* a, const mat4f* b) {
@@ -458,10 +471,64 @@ static mat4f mat4f_mul(const mat4f* a, const mat4f* b) {
     return out;
 }
 
+static inline mat4f mat4f_translation(vec3f t) {
+    return (mat4f) {{
+        { 1, 0, 0, t.x },
+        { 0, 1, 0, t.y },
+        { 0, 0, 1, t.z },
+        { 0, 0, 0,  1  },
+    }};
+}
+
+// https://en.wikipedia.org/wiki/Rotation_matrix
+static inline mat4f mat4f_rotation_z(f32 t) {
+    f32 c = cosf(t);
+    f32 s = sinf(t);
+    return (mat4f) {{
+        { c, -s, 0, 0 },
+        { s, c, 0, 0 },
+        { 0, 0, 1, 0 },
+        { 0, 0, 0, 1 },
+    }};
+}
+
+static inline mat4f mat4f_rotation_y(f32 t) {
+    f32 c = cosf(t);
+    f32 s = sinf(t);
+    return (mat4f) {{
+        { c, 0, s, 0 },
+        { 0, 1, 0, 0 },
+        { -s, 0, c, 0 },
+        { 0, 0, 0, 1 },
+    }};
+}
+
+static inline mat4f mat4f_rotation_x(f32 t) {
+    f32 c = cosf(t);
+    f32 s = sinf(t);
+    return (mat4f) {{
+        { 1, 0, 0, 0 },
+        { 0, c, -s, 0 },
+        { 0, s, c, 0 },
+        { 0, 0, 0, 1 },
+    }};
+}
+
+static inline mat4f mat4f_rotation_yxz(f32 yaw, f32 pitch, f32 roll) {
+    mat4f y = mat4f_rotation_y(yaw);
+    mat4f x = mat4f_rotation_x(pitch);
+    mat4f z = mat4f_rotation_z(roll);
+
+    mat4f xz = mat4f_mul(&x, &z);
+    mat4f yxz = mat4f_mul(&xz, &y);
+
+    return yxz;
+}
+
 static mat4s mat4f_to_mat4s(const mat4f* m) {
     mat4s out;
     for (usize i = 0; i < 4; i++) {
-        for (usize j = 0; i < 4; j++) {
+        for (usize j = 0; j < 4; j++) {
             out.inner[i][j] = f32_to_fixed16(m->inner[i][j]);
         }
     }
