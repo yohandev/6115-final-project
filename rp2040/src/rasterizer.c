@@ -20,7 +20,7 @@ inline static fixed barycentric_coord(vec2 a, vec2 b, vec2 c) {
 // a point inside of a triangle (in a loop) can be further optimized to just a handful of
 // addition and shifts which the RP2040 interpolator can perform in one cycle. Of course,
 // decisive results would require proper benchmarks over different candidate algorithms.
-void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c) {
+void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c, rgb col) {
     // AABB of the triangle
     fixed min_x = min(min(a.x, b.x), c.x);
     fixed min_y = min(min(a.y, b.y), c.y);
@@ -62,7 +62,7 @@ void rasterizer_draw_triangle(struct Framebuffer* sbuf, vec2 a, vec2 b, vec2 c) 
         for (usize x = min_xi; x <= max_xi; x++) {
             // If p is on or inside all edges, render pixel.
             if ((w0 | w1 | w2) >= 0) {
-                sbuf->pixels[i] = (rgb){ 0b11111 };
+                sbuf->pixels[i] = col;
             }
 
             // One step to the right
@@ -95,7 +95,7 @@ void rasterizer_triangle_bench(struct Framebuffer* sbuf, usize num_iter, usize l
         c.x = rand() >> log2scale;
         c.y = rand() >> log2scale;
 
-        rasterizer_draw_triangle(sbuf, a, b, c);
+        rasterizer_draw_triangle(sbuf, a, b, c, (rgb) { 0b11111 });
     }
     u64 elapsed = time_us_64() - start;
 
@@ -104,7 +104,8 @@ void rasterizer_triangle_bench(struct Framebuffer* sbuf, usize num_iter, usize l
 
 void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, const mat4s* mvp) {
     struct {
-        vec2 pos;
+        vec2 px;
+        vec3 pos;
         u16 idx;
         bool clip;
     } screen_space_cache[RASTERIZER_VERTEX_CACHE_LEN];
@@ -115,6 +116,7 @@ void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, con
     // For each triangle
     for (usize i = 0; i < mesh->num_faces * 3; i += 3) {
         vec2 pts[3];
+        vec3 spos[3];
         // For each vertex within triangle
         for (usize j = 0; j < 3; j++) {
             u16 idx = mesh->indices[i + j];
@@ -144,7 +146,8 @@ void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, con
                     screen_space_cache[hash].clip = true;
                 }
 
-                screen_space_cache[hash].pos = out;
+                screen_space_cache[hash].pos = pos;
+                screen_space_cache[hash].px = out;
                 screen_space_cache[hash].idx = idx;
             }
 
@@ -153,9 +156,10 @@ void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, con
                 goto clip_face;
             }
             pts[j] = (vec2) {
-                .x = screen_space_cache[hash].pos.x,
-                .y = screen_space_cache[hash].pos.y,
+                .x = screen_space_cache[hash].px.x,
+                .y = screen_space_cache[hash].px.y,
             };
+            spos[j] = screen_space_cache[hash].pos;
         }
 
         // Cull backfaces
@@ -164,8 +168,14 @@ void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, con
             continue;
         }
 
+        // Lambert lighting
+        vec3 norm = vec3_cross(vec3_sub(spos[1], spos[0]), vec3_sub(spos[2], spos[0]));
+        fixed light = fixed_div(vec3_dot(norm, SUN_LIGHT), vec3_magnitude(norm));
+        u16 c = max(light >> 11, 5) << 11;
+        rgb col = { (c >> 8) | (c << 8) };
+
         // Rasterize face
-        rasterizer_draw_triangle(sbuf, pts[0], pts[1], pts[2]);
+        rasterizer_draw_triangle(sbuf, pts[0], pts[1], pts[2], col);
 
         clip_face:;
     }

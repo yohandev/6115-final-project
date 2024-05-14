@@ -76,6 +76,10 @@ static inline fixed fixed_div(fixed a, fixed b) {
     return (fixed)(((i64)a << 16) / b);
 }
 
+static inline fixed fixed_sqrt(fixed f) {
+    return (fixed)(sqrtf((f32)f) / 255.0);
+}
+
 // 8.8 Fixed_Point
 typedef i16 fixed16;
 
@@ -237,6 +241,32 @@ static inline vec3 vec3_scale(const vec3 a, const fixed s) {
         .y = fixed_mul(a.y, s),
         .z = fixed_mul(a.z, s),
     };
+}
+
+static inline vec3 vec3_cross(const vec3 a, const vec3 b) {
+    return (vec3){
+        .x = fixed_mul(a.y, b.z) - fixed_mul(a.z, b.y),
+        .y = fixed_mul(a.z, b.x) - fixed_mul(a.x, b.z),
+        .z = fixed_mul(a.x, b.y) - fixed_mul(a.y, b.x),
+    };
+}
+
+static inline fixed vec3_dot(const vec3 a, const vec3 b) {
+    return fixed_mul(a.x, b.x) + fixed_mul(a.y, b.y) + fixed_mul(a.z, b.z);
+}
+
+static inline fixed vec3_magnitude(const vec3 v) {
+    return fixed_sqrt(fixed_mul(v.x, v.x) + fixed_mul(v.y, v.y) + fixed_mul(v.z, v.z));
+}
+
+static inline vec3 vec3_normalized(const vec3 v) {
+    fixed l = vec3_magnitude(v);
+    if (l == 0) {
+        return (vec3) { 0, 0, 0 };
+    }
+    fixed l1 = fixed_div(1, l);
+
+    return vec3_scale(v, l1);
 }
 
 // 3D Vector (8.8 Fixed Point)
