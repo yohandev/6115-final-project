@@ -55,6 +55,9 @@
     - Can't transform the vertices in-place in the uploaded meshes cache
     - Instead, each core has a small cache of vertices (a hash-map keyed by the vertex index) of transformed vertices that it references; i.e. it rasterizes _while_ transforming vertices.
 - 64-bit multiplication is expensive, but 32-bit is very cheap thanks for hardware multiplier. With 16-bit 8.8 fixed point, I can do multiplication in a 32-bit register. Problem: translations might exceed this. So, every transformation (scale, rotation) is applied using a 16-bit fixed point matrix, as per usual. Then the result is kept in 32-bit 16.16 fixed point and the translation component is added.
+- Good resources:
+  - [Fixed point rasterizer](https://github.com/halcy/rasterizer2/tree/master)
+  - []
 
 == Drawing Triangles
 (Go over the chosen algorithm using barycentric coordinates, benchmarks over implementations (floating point, fixed point, hardware interpolator). Note that fixed point implementation inherently has subpixel precision. See rasterizer.c)

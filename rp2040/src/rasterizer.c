@@ -106,6 +106,7 @@ void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, con
     struct {
         vec2 pos;
         u16 idx;
+        bool clip;
     } screen_space_cache[RASTERIZER_VERTEX_CACHE_LEN];
 
     // Invalidate cache at index 0
@@ -131,16 +132,25 @@ void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, con
                     .z = mesh->vertices[idx * 3 + 2],
                 });
                 vec2 out;
-                if (pos.z != 0) {
+                if (pos.z > f32_to_fixed(RASTERIZER_NEAR_CLIP)) {
                     out.x = fixed_mul(fixed_div(pos.x, pos.z), i32_to_fixed(FRAME_BUFFER_WIDTH));
                     out.y = fixed_mul(fixed_div(pos.y, pos.z), i32_to_fixed(FRAME_BUFFER_HEIGHT));
 
                     out.x += i32_to_fixed(FRAME_BUFFER_WIDTH / 2);
                     out.y += i32_to_fixed(FRAME_BUFFER_HEIGHT / 2);
+
+                    screen_space_cache[hash].clip = false;
+                } else {
+                    screen_space_cache[hash].clip = true;
                 }
 
                 screen_space_cache[hash].pos = out;
                 screen_space_cache[hash].idx = idx;
+            }
+
+            // If a single vertex is clipped, just skip the entire face
+            if (screen_space_cache[hash].clip) {
+                goto clip_face;
             }
             pts[j] = (vec2) {
                 .x = screen_space_cache[hash].pos.x,
@@ -148,7 +158,15 @@ void rasterizer_draw_mesh(struct Framebuffer* sbuf, const struct Mesh* mesh, con
             };
         }
 
+        // Cull backfaces
+        fixed winding = fixed_mul(pts[1].x - pts[0].x, pts[2].y - pts[0].y) - fixed_mul(pts[2].x - pts[0].x, pts[1].y - pts[0].y);
+        if (winding < 0) {
+            continue;
+        }
+
         // Rasterize face
         rasterizer_draw_triangle(sbuf, pts[0], pts[1], pts[2]);
+
+        clip_face:;
     }
 }

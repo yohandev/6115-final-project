@@ -61,17 +61,19 @@ int main() {
 
     interp_set_config(interp0, 0, &lane0_cfg);
     interp_set_config(interp0, 1, &lane1_cfg);
-    interp0->base[2] = (uint32_t) raspberry_256x256;
+    interp0->base[2] = (u32) raspberry_256x256;
 
-    float theta = 0.f;
-    float theta_max = 2.f * (float) M_PI;
+    f32 theta = 0.f;
+    f32 theta_max = 2.f * (f32) M_PI;
     while (1) {
+        u64 start = time_us_64();
+
         theta += 0.02f;
         if (theta > theta_max)
             theta -= theta_max;
-        int32_t rotate[4] = {
-                (int32_t) (cosf(theta) * (1 << UNIT_LSB)), (int32_t) (-sinf(theta) * (1 << UNIT_LSB)),
-                (int32_t) (sinf(theta) * (1 << UNIT_LSB)), (int32_t) (cosf(theta) * (1 << UNIT_LSB))
+        i32 rotate[4] = {
+                (i32) (cosf(theta) * (1 << UNIT_LSB)), (i32) (-sinf(theta) * (1 << UNIT_LSB)),
+                (i32) (sinf(theta) * (1 << UNIT_LSB)), (i32) (cosf(theta) * (1 << UNIT_LSB))
         };
         interp0->base[0] = rotate[0];
         interp0->base[1] = rotate[2];
@@ -109,5 +111,9 @@ int main() {
 
         framebuffer_swap();
         lcd_put(&display, (u8*)framebuffer_get_offscreen()->pixels);
+
+        u64 end = time_us_64();
+
+        printf("Frame took %lldms\n", (end - start) / 1000);
     }
 }
