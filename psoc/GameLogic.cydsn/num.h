@@ -118,6 +118,14 @@ static inline vec3 vec3_lerp(const vec3 a, const vec3 b, const f32 t) {
     };
 }
 
+static inline f32 vec3_magnitude(const vec3 v) {
+    return sqrtf(v.x * v.x + v.y * v.y + v.z * v.z);
+}
+
+static inline vec3 vec3_normalized(const vec3 v) {
+    return vec3_scale(v, 1 / vec3_magnitude(v));
+}
+
 // Quaternion
 // Adapted from https://github.com/MartinWeigel/Quaternion
 typedef struct {
@@ -273,6 +281,8 @@ static quat quat_angle_axis(f32 angle, const vec3 axis) {
     out.x = axis.x * s;
     out.y = axis.y * s;
     out.z = axis.z * s;
+    
+    return out;
 }
 
 #endif

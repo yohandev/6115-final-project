@@ -572,13 +572,19 @@
 <file name=".\player.c" />
 <file name=".\player.h" />
 <file name=".\time.h" />
+<file name=".\CortexM3\ARM_GCC_493\Release\asteroid_mesh.o">
+<dep name=".\assets\asteroid_mesh.c" />
+<dep name=".\gpu.h" />
+<dep name=".\num.h" />
+</file>
+<file name=".\assets\asteroid_mesh.c" />
+<file name=".\gpu.h" />
 <file name=".\CortexM3\ARM_GCC_493\Release\star_destroyer_mesh.o">
 <dep name=".\assets\star_destroyer_mesh.c" />
 <dep name=".\gpu.h" />
 <dep name=".\num.h" />
 </file>
 <file name=".\assets\star_destroyer_mesh.c" />
-<file name=".\gpu.h" />
 <file name=".\CortexM3\ARM_GCC_493\Release\xwing_mesh.o">
 <dep name=".\assets\xwing_mesh.c" />
 <dep name=".\gpu.h" />
@@ -1287,6 +1293,7 @@
 <dep name=".\CortexM3\ARM_GCC_493\Release\xwing_mesh.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\player.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\time.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Release\asteroid_mesh.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\cyfitter_cfg.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\cymetadata.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Release\Joystick_X_Pin.o" />
@@ -1422,6 +1429,7 @@
 <name_val_pair name=".\Generated_Source\PSoC5\GameTimeClock.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
 <name_val_pair name=".\Generated_Source\PSoC5\GameTimeReg.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
 <name_val_pair name=".\time.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
+<name_val_pair name=".\assets\asteroid_mesh.c" v="-mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D NDEBUG -Wall -ffunction-sections -Os -ffat-lto-objects -std=gnu11" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\yohan\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\GameLogic.cyprj -d CY8C5888LTI-LP097 -s C:\Users\yohan\OneDrive\Documents\MIT\6.115\6115-final-project\psoc\GameLogic.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE" />
@@ -2285,7 +2293,7 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="133591048139584978" />
+<deps_time v="133591593079263408" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 </userData>
