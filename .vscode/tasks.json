@@ -1,0 +1,29 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build & Run RP2040 GPU",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/rp2040/build"
+            },
+            // "command": "make rp2040_gpu && probe-rs run --chip rp2040 rp2040_gpu.elf",
+            "command": "make rp2040_gpu && cp rp2040_gpu.uf2 /Volumes/RPI-RP2/",
+            "problemMatcher": []
+        },
+        {
+            "label": "Configure CMake for RP2040 GPU",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/rp2040/build"
+            },
+            "command": "cmake .. -DPICO_BOARD=SEEED_XIAO_RP2040"
+        }
+    ]
+}

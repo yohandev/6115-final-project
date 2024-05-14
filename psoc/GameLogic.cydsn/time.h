@@ -1,7 +1,7 @@
 #ifndef TIME_H
 #define TIME_H
 
-#include "num.h"
+#include "common/num.h"
     
 struct Time {
     f32 dt;

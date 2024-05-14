@@ -1,7 +1,7 @@
 #ifndef WORLD_H
 #define WORLD_H
 
-#include "num.h"
+#include "common/num.h"
 
 // TODO:
 // Overview of asteroids field algorithm:
@@ -24,19 +24,19 @@
 
 struct World {
     struct Camera {
-        vec3 pos;
-        vec3 rot;
+        vec3f pos;
+        vec3f rot;
     } camera;
 
     struct Asteroids {
-        vec3 pos[WORLD_ASTEROIDS_POOL_LEN];
-        vec3 rot[WORLD_ASTEROIDS_POOL_LEN];
+        vec3f pos[WORLD_ASTEROIDS_POOL_LEN];
+        vec3f rot[WORLD_ASTEROIDS_POOL_LEN];
         f32 scale[WORLD_ASTEROIDS_POOL_LEN];
     } asteroids;
 
     struct StarDestroyer {
-        vec3 pos;
-        vec3 rot;
+        vec3f pos;
+        vec3f rot;
     } star_destroyer;
 };
 

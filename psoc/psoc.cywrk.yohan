@@ -411,6 +411,9 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\GameLogic.cydsn\main.c" />
+<name v=".\GameLogic.cydsn\GameLogic.cydwr" />
+<name v=".\GameLogic.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\GameLogic.cydsn\num.h" />
 </OpenDocs>
 <config v="Release" />
 <AutoUpdate v="true" />

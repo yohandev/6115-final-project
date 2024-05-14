@@ -1,3 +1,14 @@
 {
-    "C_Cpp.default.cStandard": "c11"
+    "C_Cpp.default.cStandard": "c11",
+    "files.associations": {
+        "*.ms": "bsv",
+        "stdlib.h": "c",
+        "stddef.h": "c",
+        "stdio_rtt.h": "c",
+        "raspberry_256x256_rgb565.h": "c",
+        "rasterizer.h": "c",
+        "num.h": "c",
+        "queue": "c"
+    },
+    "dotnet.defaultSolution": "disable"
 }

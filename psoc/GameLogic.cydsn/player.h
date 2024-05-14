@@ -1,16 +1,16 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "num.h"
+#include "common/num.h"
 
 struct Player {
-    vec3 pos;
+    vec3f pos;
     quat rot;
     
     quat target_rot;
     quat yaw_pitch;
     
-    vec3 camera_pos;
+    vec3f camera_pos;
     quat camera_rot;
 };
 

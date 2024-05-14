@@ -1,7 +1,7 @@
 #ifndef GAMEPAD_H
 #define GAMEPAD_H
 
-#include "num.h"
+#include "common/num.h"
 
 struct Gamepad {
     struct {
