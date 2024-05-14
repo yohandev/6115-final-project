@@ -13,6 +13,7 @@
 #include "framebuffer.h"
 #include "rasterizer.h"
 #include "st7789.h"
+#include "psoc_rx.h"
 
 struct LCD display = {
     .pins = {
@@ -24,6 +25,15 @@ struct LCD display = {
     .pio = pio0,
     .sm = 0,
     .dma = -1,
+};
+
+struct PsocRx psoc = {
+    .pins = {
+        .mosi = 26,
+        .sck = 27,
+    },
+    .pio = pio0,
+    .sm = 1,
 };
 
 // Tested with the parts that have the height of 240 and 320
@@ -41,6 +51,7 @@ int main() {
     stdio_init_all();
 
     lcd_init(&display);
+    psoc_rx_init(&psoc);
 
     // Other SDKs: static image on screen, lame, boring
     // Raspberry Pi Pico SDK: spinning image on screen, bold, exciting

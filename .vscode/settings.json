@@ -8,7 +8,8 @@
         "raspberry_256x256_rgb565.h": "c",
         "rasterizer.h": "c",
         "num.h": "c",
-        "queue": "c"
+        "queue": "c",
+        "psoc_rx.h": "c"
     },
     "dotnet.defaultSolution": "disable"
 }

@@ -24,11 +24,15 @@ add_executable(rp2040_gpu)
 pico_generate_pio_header(rp2040_gpu
     ${CMAKE_CURRENT_LIST_DIR}/src/st7789.pio
 )
+pico_generate_pio_header(rp2040_gpu
+    ${CMAKE_CURRENT_LIST_DIR}/src/psoc_rx.pio
+)
 target_sources(rp2040_gpu PRIVATE
     src/main.c
     src/st7789.c
     src/framebuffer.c
     src/rasterizer.c
+    src/psoc_rx.c
 )
 include_directories(rp2040_gpu
     ../psoc/GameLogic.cydsn/common
