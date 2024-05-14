@@ -99,9 +99,9 @@ int main() {
         // rasterizer_triangle_bench(sbuf, 100, 9);
 
         mat4f translation = mat4f_translation((vec3f) {
-            .x=0.0,
-            .y=0,
-            .z=20.0,
+            .x=cosf(theta * 2) * 10.0,
+            .y=sinf(theta * 3) * 10.0,
+            .z=15.0 + sinf(theta) * 5.0,
         });
         mat4f rotation = mat4f_rotation_y(theta);
         mat4f mvp = mat4f_mul(&translation, &rotation);
